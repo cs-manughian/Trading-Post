@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+  	<title>Trading Post</title>
+
+  	<meta name="description" content="">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+	<script type="text/javascript" src="lib/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="lib/angular/angular.js"></script>
+	<script type="text/javascript" src="lib/angular/angular-route.js"></script>
+	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="trading-post.js"></script>
+	<script type="text/javascript" src="routes/client-routes.js"></script>
+	<script type="text/javascript" src="trading-post/controllers/recentposts-client-controller.js"></script>
+</head>
+
+<body>
+      <div class="header">
+
+        <div class="header-content">
+
+     	  <img src="img/tradingLogo.png">
+
+      	  <form name="search" role="form">
+		
+   		<div class="input-group input-group-search searchBar">
+
+		<!--Use ngOptions here-->
+		 <select class="form-control" style="width:20%"></select> 
+
+     	  	 <input type="text" class="form-control" value="Search..." style="width:45%" required>
+		 <input type="text" class="form-control" value="Near..." style="width:35%" required>
+
+     	 	  <span class="input-group-addon">
+     	  	     <button class="btn-search" ng-disabled="search.$invalid">
+     	  	         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+     	  	     </button>
+     	  	  </span>
+
+    	   	 <input type="hidden" name="mode" value="web"/>
+
+    		 </div>
+
+      	   </form>
+
+
+          <br>
+          <a href="#/about" class="barLink">About</a>
+          <a href="#/recent" class="barLink">Recent Posts</a>
+
+          <a href="#/profile" class="barLink" style="margin-left:700px;">Your Profile</a>
+          <a href="/signup" class="barLink">Sign Up</a>
+
+        </div>
+ 
+      </div>
+
+      <div class="page-content" ng-view></div>             
+    
+       
+      <footer class="panel-footer">
+            <div>
+              <p class="footerTitle">Contact Us</p>
+	      <p class="footerText">text</p>
+            </div>
+      </footer>
+    
+
+
+
+</body>
+</html>

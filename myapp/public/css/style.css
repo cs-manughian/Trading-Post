@@ -1,0 +1,76 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+}
+
+a {
+  color: #00B7FF;
+}
+
+form {
+
+  width: 500px;
+}
+
+.searchBar {
+
+  width: 500px;
+
+}
+
+
+.header {
+
+  background-color: #337AB7;
+  height: 175px;
+
+}
+
+.header-content {
+
+  margin-left: 100px;
+  padding-top: 25px;
+}
+
+
+.barLink {
+
+  margin-right: 20px; 
+  color: white;
+}
+
+.profileLink {
+
+  margin: 0px 20px 20px 0px; 
+  color: #337AB7;
+}
+
+
+.page-content {
+
+  margin-left: 100px;
+
+}
+
+
+footer {
+  width: 100%;
+  height: 200px;
+  margin-top: 75px;
+  font-size: 10px;
+}
+
+.footerTitle {
+
+  color: #E5802E;
+  font-weight: bold;
+  margin: 25px 75px 25px 75px;
+}
+
+.footerText {
+
+  color: #000000;
+  margin: 10px 75px 10px 75px;
+
+}
