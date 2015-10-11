@@ -1,21 +1,21 @@
 // Create a controller and add to trading-post module
-angular.module('trading-post').controller('recentController',function($scope, $http){
+angular.module('trading-post').controller('recentController', function($scope, $http, RecentPostsService){
 	
 	console.log('Entering recent posts controller...');
 
 	$scope.name ='recent';
 
-	$scope.testValue = 'testValue';
+	$scope.recentPosts = [];
 
+	$scope.requestRecentPosts = function() {
 
-	$scope.requestRecentPosts = function()
-	{
-
-		// Use post for secure queries
-		// Need recent posts for display
-		$http.post('/recent').
+		RecentPostsService.getRecentPosts().
 		   success(function(responseData) {
-    		   	 $scope.testValue = responseData;
+
+			var i;
+			for( i = 0; i < responseData.length; i++ ){
+				$scope.recentPosts[i] = responseData[i];
+				console.log("res: ",responseData[i]);}
     		   }).
 		   error(function(responseData) {
     	   		 console.log('Recent posts POST error. Received: ', responseData);
