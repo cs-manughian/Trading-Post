@@ -10,7 +10,6 @@
 // Goods/Services collection
 
 
-
 // Retrieve recent posts from the database
 exports.sendRecentPosts = function (req,res) {
 
@@ -47,32 +46,141 @@ exports.sendRecentPosts = function (req,res) {
 						
       				} else {
         				console.log('No document(s) found with defined "find" criteria!');
-      				}				
+      					res.end();
+				}				
     		});
 
-};
+}
 
 
+// Update a good/service value field
+exports.updateGoodsOrServices = function (req,res) {
 
 
+		// Get the documents collection
+    		var collection = req.db.collection("gs");
+		
+		oldQuery = {};
+		newQuery = {};
+		oldQuery[req.body.oldkey] = req.body.oldvalue;
+		newQuery[req.body.newkey] = req.body.newvalue;
 
-readDocument = function(db, coll, owner) {  
+    		collection.update(oldQuery, {$set: newQuery}, function (err, result) {
+      				
+				if (err) {
+        				console.log(err);
+      				} else {
+        				console.log('Updated data!');
+      					res.end();
+				}				
+    		});
 
+}
+
+
+// Insert a good/service
+exports.insertGoodsOrServices = function (req,res) {
+
+		// Get the documents collection
+    		var collection = req.db.collection("gs");
+
+    		collection.insert({
 	
-}
-
-logCollections = function(db, coll) {
-
- 		//Query Mongodb and iterate through the results
-  		db.collection(coll).find({},{},{}).toArray(
-    		function(err, docs){
-      			for(index in docs){
-        			console.log(docs[index]);
-      			}
-
+				owner: req.body.owner,
+				zipcode: req.body.zipcode,	
+				name: req.body.name,
+				type: req.body.type,
+				quantity: req.body.quantity,
+				imgUrl: req.body.imgUrl,
+				category: req.body.category,
+				datePosted: req.body.datePosted
+			
+			}, function (err, result) {
+      				
+				if (err) {
+        				console.log(err);
+						
+      				} else {
+        				console.log('Inserted data!');
+      					res.end();
+				}				
     		});
 
 }
+
+
+// Remove a good/service
+exports.removeGoodsOrServices = function (req,res) {
+
+		// Get the documents collection
+    		var collection = req.db.collection("gs");
+
+		// Remove a users good/service based on the ID (or whatever).
+		// Values can be an array of keys in case we want to
+		// remove multiple goods/services in one query.
+	
+		query = {};
+		query[req.body.key] = {'$in': req.body.values};
+		
+		//{req.body._id: {'$in': req.body.values}}
+
+    		collection.remove( query , function (err, result) {
+      				
+				if (err) {
+        				console.log(err);      		
+						
+      				} else {
+        				console.log('Removed data!');
+      					res.end();
+				}				
+    		});
+
+}
+
+
+//======================================================//
+// Query function can perform these actions:
+// Get a good/service
+	// Search goods/services by a key 
+	//{req.body.key: {$exists: true}}
+
+	// Search goods/services by a key and value
+	//{req.body.key: req.body.value}
+//======================================================//
+
+exports.queryGoodsAndServices = function (req,res) {
+
+		// Get the documents collection
+    		var collection = req.db.collection("gs");
+		var query = {};
+		
+		if( req.body.value )
+			query[req.body.key] = req.body.value;
+		else
+			query[req.body.key] = {$exists: true};
+
+    		collection.find( query ).toArray(function (err, result) {
+      				
+				if (err) {
+        				console.log(err);
+
+      				} else if (result.length) {
+
+       					console.log('Found:', result);
+					
+					// Send the data to the client
+					res.end( JSON.stringify(result) );
+
+						
+      				} else {
+        				console.log('No document(s) found with defined "find" criteria!');
+      					res.end();
+				}				
+    		});
+
+}
+
+
 
 getDate = function()
 {

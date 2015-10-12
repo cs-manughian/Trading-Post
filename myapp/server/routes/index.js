@@ -39,6 +39,12 @@ module.exports = function (app) {
 				};
 
 				app.post('/recent', attachDB, goodsServices.sendRecentPosts);
+
+				// For Goods and Services
+				app.post('/updategs', attachDB, goodsServices.updateGoodsOrServices);
+				app.post('/insertgs', attachDB, goodsServices.insertGoodsOrServices);
+				app.post('/searchgs', attachDB, goodsServices.queryGoodsAndServices);
+				app.post('/removegs', attachDB, goodsServices.removeGoodsOrServices);
 			}
    	});
 	
