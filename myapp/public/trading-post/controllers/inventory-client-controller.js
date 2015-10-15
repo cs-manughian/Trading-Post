@@ -1,5 +1,5 @@
 // Create a controller and add to trading-post module
-angular.module('trading-post').controller('inventoryController', function($scope, $http, GoodsServicesService){
+angular.module('trading-post').controller('inventoryController', function($scope, $http){
 	
 	$scope.name ='inventory';
 
@@ -14,9 +14,9 @@ angular.module('trading-post').controller('inventoryController', function($scope
 	// *tested already*
 	// Will get data from view (user) and bind data to view
 
-	$scope.query = { key: 'owner', value: 'Cosi'};
+	$scope.query = { collName: 'gs', key: 'owner', value: 'Cosi'};
 	$scope.query2 = {
-	
+				collName: "gs",
 				owner: "Mana",
 				zipcode: "90277",	
 				name: "Oranges",
@@ -28,13 +28,13 @@ angular.module('trading-post').controller('inventoryController', function($scope
 			
 			};
 
-	$scope.query3 = {key: "owner", values: ["Mana"]};
-	$scope.query4 = {oldkey: "owner", oldvalue: "Mana", newkey: "owner", newvalue: "John"};
+	$scope.query3 = { collName: 'gs', key: "owner", values: ["John"]};
+	$scope.query4 = { collName: 'gs', oldkey: "owner", oldvalue: "Mana", newkey: "owner", newvalue: "John"};
 
 
 	$scope.searchGS = function( q ) {
 
-		GoodsServicesService.search( q ).
+		$http.post('/search', q ).
 		   success(function(responseData) {
 
 			var i;
@@ -51,7 +51,7 @@ angular.module('trading-post').controller('inventoryController', function($scope
 
 	$scope.insertGS = function( q2 ) {
 
-		GoodsServicesService.insert( q2 ).
+		$http.post('/insert', q2).
 		   success(function(responseData) {
 			console.log('Successful GS insert'); 
     		   }).
@@ -64,7 +64,7 @@ angular.module('trading-post').controller('inventoryController', function($scope
 	//$scope.insertGS( $scope.query2 );
 
 	// No success/err function for testing
-	//GoodsServicesService.remove($scope.query3);	
-	//GoodsServicesService.update($scope.query4);
+	//$http.post('/remove', $scope.query3);	
+	//$http.post('/update', $scope.query4);
 });	
 

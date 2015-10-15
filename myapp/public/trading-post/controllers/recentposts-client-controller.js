@@ -1,5 +1,5 @@
 // Create a controller and add to trading-post module
-angular.module('trading-post').controller('recentController', function($scope, $http, RecentPostsService){
+angular.module('trading-post').controller('recentController', function($scope, $http){
 	
 	console.log('Entering recent posts controller...');
 
@@ -9,7 +9,7 @@ angular.module('trading-post').controller('recentController', function($scope, $
 
 	$scope.requestRecentPosts = function() {
 
-		RecentPostsService.getRecentPosts().
+		$http.post('/recent').
 		   success(function(responseData) {
 
 			var i;

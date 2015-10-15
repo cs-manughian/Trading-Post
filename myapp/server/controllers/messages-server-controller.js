@@ -6,9 +6,5 @@
 */
 
 
-var model = require('../models/db');
-
-
-
 // Messages collection
 

@@ -6,11 +6,5 @@
 */
 
 
-var model = require('../models/db');
-
-
-
 // Trades collection
-
-
-
+		

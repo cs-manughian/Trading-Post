@@ -5,7 +5,6 @@ var express = require('express');
 var routes = require('./server/routes/index');
 var http = require('http');
 var path = require('path');
-var db = require('./server/models/db');
 var bodyParser = require('body-parser');
 
 var app = express();

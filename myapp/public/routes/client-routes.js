@@ -5,13 +5,14 @@
 
 // configure our routes
 angular.module('trading-post').config(['$routeProvider', '$locationProvider', 
-	function($routeProvider, $locationProvider) {
+    function($routeProvider, $locationProvider) {
 
-    	    $routeProvider
+            $routeProvider
 
             // route for the home page
             .when('/', {
-                templateUrl : 'trading-post/views/index.html'
+          //Show recent posts as the home page
+                templateUrl : 'trading-post/views/recentposts.html' 
             })
 
             // route for the about page
@@ -39,7 +40,8 @@ angular.module('trading-post').config(['$routeProvider', '$locationProvider',
        
             })
 
-      	    .otherwise({
-        	redirectTo: '/'
-      	    });
+
+            .otherwise({
+            redirectTo: '/'
+            });
         }]);

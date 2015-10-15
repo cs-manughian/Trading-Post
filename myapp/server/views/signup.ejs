@@ -10,17 +10,18 @@
 
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
-
+	<script type="text/javascript" src="lib/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="lib/angular/angular.js"></script>
 	<script type="text/javascript" src="lib/angular/angular-route.js"></script>
-	<script type="text/javascript" src="lib/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript" src="trading-post.js"></script>
 	<script type="text/javascript" src="routes/client-routes.js"></script>
+
 	
 </head>
 
 <body>
+
       <div class="header">
 
         <div class="header-content">
@@ -30,7 +31,7 @@
         </div>
  
       </div>
-
+	    
 
      <div class="page-content">
 
@@ -41,61 +42,75 @@
 
 	<h3>Create New User:</h3>
 	<br>
-	<form class="form-horizontal">
+	<form class="form-horizontal" role="form" action="/createUser" method="post">
 	  <div class="form-group">
-	    <label class="col-sm-2 control-label">User Name:</label>
+	    <label class="col-sm-2 control-label">Username:</label>
 	    <div class="col-sm-10">
-	    <input type="text" ng-model="user" ng-disabled="!edit" placeholder="First Name">
+	    <input type="text" name="user" placeholder="Username">
 	    </div>
 	  </div> 
 	  <div class="form-group">
 	    <label class="col-sm-2 control-label">Email:</label>
 	    <div class="col-sm-10">
-	    <input type="email" ng-model="email" ng-disabled="!edit" placeholder="Email">
+	    <input type="email" name="email" placeholder="Email">
 	    </div>
 	  </div>
 	  <div class="form-group">
-	    <label class="col-sm-2 control-label">Phone Number:</label>
+	    <label class="col-sm-2 control-label">Phone:</label>
 	    <div class="col-sm-10">
-	    <input type="text" ng-model="lName" ng-disabled="!edit" placeholder="Phone Number">
+	    <input type="text" name="phone" placeholder="Phone">
 	    </div>
 	  </div>
 	  <div class="form-group">
-	    <label class="col-sm-2 control-label">Zip Code:</label>
+	    <label class="col-sm-2 control-label" style="padding-right:5px;">Zip Code:</label>
 	    <div class="col-sm-10">
-	    <input type="text" ng-model="lName" ng-disabled="!edit" placeholder="Zip Code">
+	    <input type="text" name="zip" placeholder="Zip Code">
 	    </div>
 	  </div>
 	  <div class="form-group">
  	   <label class="col-sm-2 control-label">Password:</label>
  	     <div class="col-sm-10">
-	      <input type="password" ng-model="passw1" placeholder="Password">
+	      <input type="password" name="passw1" placeholder="Password">
 	     </div>
 	  </div>
  	 <div class="form-group">
  	   <label class="col-sm-2 control-label">Repeat:</label>
 	     <div class="col-sm-10">
- 	      <input type="password" ng-model="passw2" placeholder="Repeat Password">
+ 	      <input type="password" name="passw2" placeholder="Repeat Password">
  	     </div>
 	  </div>
+	  <hr>
+		<button class="btn btn-success" type="submit">
+		<span class="glyphicon glyphicon-user"></span>  Create New User
+		</button>
 	</form>
-	<hr>
+	
 
-<button class="btn btn-success" onclick="window.location.href='/'">
-<span class="glyphicon glyphicon-user"></span>  Create New User
-</button>
 
 </div>
 
 
-     </div>        
+     </div>         
     
        
       <footer class="panel-footer">
-            <div>
-              <p class="footerTitle">Contact Us</p>
-	      <p class="footerText">text</p>
-            </div>
+            <div class="footerSection">
+              <p class="footerTitle">Get to Know Us</p>
+	       <p class="footerText">Careers</p>
+		<p class="footerText">Policies</p>
+	       <p class="footerText">Press</p>
+		<p class="footerText">Investors</p>		
+	     </div>
+            <div class="footerSection">
+              <p class="footerTitle">Make Money With Us</p>
+	       <p class="footerText">Trade on Trading Post</p>
+		<p class="footerText">Advertise</p>
+	     </div>
+            <div class="footerSection">
+              <p class="footerTitle">Let Us Help You</p>
+	       <p class="footerText">Your Account</p>
+		<p class="footerText">Your Trades</p>
+	     </div>
       </footer>
     
 
