@@ -3,19 +3,16 @@
   <h3>Recent Posts</h3>
 	
   <br>
-  <img src="{{recentPosts[0].imgUrl}}">
+  <div ng-repeat="post in recentPosts">
+  <img src="{{post.imgUrl}}">
   <br>
-   {{recentPosts[0].type}}: {{recentPosts[0].name}} 
+   Name: {{post.type}} {{post.name}} 
   <br>
-   Owner: {{recentPosts[0].owner}}
+   Owner: {{post.owner}}
   <br>
-   Quantity: {{recentPosts[0].quantity}}
+   Quantity: {{post.quantity}}
   <br>
-  <img src="img/placeHolder.png">
-  <img src="img/placeHolder.png">
-  <br>
-  <img src="img/placeHolder.png"> 
-  <img src="img/placeHolder.png">
-  <img src="img/placeHolder.png">
+
+</div>
 
 </div>

@@ -19,6 +19,7 @@ a {
 form {
 
   width: 500px;
+  overflow: hidden;
 }
 
 .searchBar {
@@ -37,6 +38,9 @@ form {
   padding-top: 25px;
 }
 
+.logo {
+  float: left;
+}
 
 .barLink {
 
