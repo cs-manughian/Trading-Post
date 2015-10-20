@@ -15,11 +15,13 @@ app.set('views', path.join(__dirname, './server/views'));
 app.set('view engine', 'ejs');
 app.use(express.favicon());
 app.use(express.logger('dev'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.cookieParser());
+app.use(express.session({secret: 's3a45lv76py0w9q2yt43'}));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use( bodyParser.json() );    // to support JSON-encoded bodies

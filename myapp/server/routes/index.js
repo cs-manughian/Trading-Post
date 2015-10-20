@@ -12,21 +12,22 @@ module.exports = function (app) {
 
 	//============Require functions to handle HTTP requests===========//
 
-	var users         = require('../controllers/users-server-controller.js');
-	var goodsServices = require('../controllers/gs-server-controller.js');
+	var index	    = require('../controllers/index-server-controller.js');
+	var users           = require('../controllers/users-server-controller.js');
+	var goodsServices   = require('../controllers/gs-server-controller.js');
 	var signup	    = require('../controllers/signup-server-controller.js');
+	var login	    = require('../controllers/login-server-controller.js');
 	var crudOps	    = require('../controllers/all-server-controller.js');
+
 
 	//=======Specify functions to handle specific HTTP requests======//
 
-	//Handle page requests
-	app.get('/', function(req, res, next) {
-   		 res.render('index');
-	});
+	// For giving client login information
+	app.get('/loginInfo', login.getLoginInfo);
 
-	app.get('/signup', function(req, res, next) {
-   		 res.render('signup');
-	});
+	// For logging out the user
+	app.get('/logout', login.logOutUser);
+
 
 	//Handle data (model) requests
 	MongoClient.connect("mongodb://localhost:27017/tradingpost", function(err, db) {
@@ -40,11 +41,33 @@ module.exports = function (app) {
 					next();
 				};
 
+				// Session middleware for all routes
+
+				//Handle page requests
+
+				// For index page
+				app.get('/', attachDB, login.requiredAuthentication, index.display);
+
+				// For signup page
+				app.get('/signup', attachDB, signup.display);
+
+				// For login page
+				app.get('/login', attachDB, function(req, res, next) {
+   		 			res.render('login', {status:''});
+				});
+				
+				// For anything else (like ng-view partials)
+				app.get('/*', attachDB, login.requiredAuthentication, index.display);
+
+
 				// For recent posts
 				app.post('/recent', attachDB, goodsServices.sendRecentPosts);
 
 				//For sign-up form (Special insert-- Must process data first)
 				app.post('/createUser', attachDB, signup.createUser);
+
+				//For login form
+				app.post('/login', attachDB, login.logInUser);
 
 				// For any page 
 				app.post('/update', attachDB, crudOps.updateDocument);

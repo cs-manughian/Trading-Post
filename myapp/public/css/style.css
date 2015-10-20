@@ -7,7 +7,7 @@ html {
 body {
   min-height: 100%;
   min-width: 100%;
-  padding: 0px;
+  padding: 0px 40px 0px 40px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
 }
@@ -17,14 +17,13 @@ a {
 }
 
 form {
-
-  width: 500px;
+  width: 550px;
   overflow: hidden;
 }
 
 .searchBar {
   width: 500px;
-
+  margin: 25px 0px 0px 8px;
 }
 
 
@@ -43,9 +42,13 @@ form {
 }
 
 .barLink {
-
   margin-right: 20px; 
   color: white;
+}
+
+#logoutLink {
+  float: right;
+  margin-right: 200px;
 }
 
 .profileLink {

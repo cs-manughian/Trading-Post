@@ -2,22 +2,23 @@
 <html lang="en">
 <head>
 
-    <title>Trading Post</title>
+  	<title>Trading Post</title>
 
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  	<meta name="description" content="">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
-  <script type="text/javascript" src="lib/jquery-1.11.3.min.js"></script>
-  <script type="text/javascript" src="lib/angular/angular.js"></script>
-  <script type="text/javascript" src="lib/angular/angular-route.js"></script>
-  <script type="text/javascript" src="lib/bootstrap/js/bootstrap.js"></script>
-  <script type="text/javascript" src="trading-post.js"></script>
-  <script type="text/javascript" src="routes/client-routes.js"></script>
-  <script type="text/javascript" src="trading-post/controllers/recentposts-client-controller.js"></script>
-  <script type="text/javascript" src="trading-post/controllers/inventory-client-controller.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+	<script type="text/javascript" src="lib/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="lib/angular/angular.js"></script>
+	<script type="text/javascript" src="lib/angular/angular-route.js"></script>
+	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="trading-post.js"></script>
+	<script type="text/javascript" src="routes/client-routes.js"></script>
+	<script type="text/javascript" src="trading-post/controllers/recentposts-client-controller.js"></script>
+	<script type="text/javascript" src="trading-post/controllers/inventory-client-controller.js"></script>
+	<script type="text/javascript" src="trading-post/controllers/profile-client-controller.js"></script>
 </head>
 
 <body>
@@ -25,49 +26,57 @@
 
         <div class="header-content">
 
-        <div class="logo"><a href="#"><img src="img/tradingLogo.png"></a></div>
+     	  <div class="logo"><a href="#"><img src="img/tradingLogo.png"></a></div>
 
-      <form name="search" role="form">
-    
-      <div class="input-group input-group-search searchBar">
+      	  <form name="search" role="form">
+		
+   		<div class="input-group input-group-search searchBar">
 
-    <!--Use ngOptions here-->
-     <select class="form-control" style="width:30%">
-      <option>All</option>
-      <option>Beauty</option>
-      <option>Clothing</option>
-      <option>Electronics</option>
-      <option>Entertainment</option>
-      <option>Food</option>
-      <option>Furniture</option>
-      <option>Music</option>
-      <option>Jewelry</option>
-      <option>Kids</option>
-      <option>Outdoors</option>
-     </select> 
+		<!--Use ngOptions here-->
+		 <select class="form-control" style="width:30%">
+			<option>All</option>
+			<option>Beauty</option>
+			<option>Clothing</option>
+			<option>Electronics</option>
+			<option>Entertainment</option>
+			<option>Food</option>
+			<option>Furniture</option>
+			<option>Music</option>
+			<option>Jewelry</option>
+			<option>Kids</option>
+			<option>Outdoors</option>
+		 </select> 
 
-           <input type="text" class="form-control" placeholder="Search..." style="width:45%" required>
-     <input type="text" class="form-control" placeholder="Zipcode..." style="width:25%" required>
+     	  	 <input type="text" class="form-control" placeholder="Search..." style="width:45%" required>
+		 <input type="text" class="form-control" placeholder="Zipcode..." style="width:25%" required>
 
-          <span class="input-group-addon">
-               <button class="btn-search" ng-disabled="search.$invalid">
-                   <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-               </button>
-            </span>
+     	 	  <span class="input-group-addon">
+     	  	     <button class="btn-search" ng-disabled="search.$invalid">
+     	  	         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+     	  	     </button>
+     	  	  </span>
 
-           <input type="hidden" name="mode" value="web"/>
+    	   	 <input type="hidden" name="mode" value="web"/>
 
-         </div>
+    		 </div>
 
-           </form>
+      	   </form>
 
 
-          <br>
+          <br><br><br>
           <a href="#/about" class="barLink">About</a>
           <a href="#/recent" class="barLink">Recent Posts</a>
 
-          <a href="#/profile" class="barLink">Your Profile</a>
-          <a href="/signup" class="barLink">Sign Up</a>
+	   <% if( locals.username ) { %>
+             		<a href="#/profile" class="barLink">Your Profile</a>
+		<span id="logoutLink">
+	      		<b><%=usergreeting %></b>
+	      		<a href="logout" class="barLink">Log out</a>
+		</span>
+	   <% } else { %>
+	      <a href="/signup" class="barLink">Sign Up</a>
+	      <a href="/login" class="barLink">Log in</a>
+	   <% } %>
 
         </div>
  
@@ -79,21 +88,21 @@
       <footer class="panel-footer">
             <div class="footerSection">
               <p class="footerTitle">Get to Know Us</p>
-         <p class="footerText">Careers</p>
-    <p class="footerText">Policies</p>
-         <p class="footerText">Press</p>
-    <p class="footerText">Investors</p>   
-       </div>
+	       <p class="footerText">Careers</p>
+		<p class="footerText">Policies</p>
+	       <p class="footerText">Press</p>
+		<p class="footerText">Investors</p>		
+	     </div>
             <div class="footerSection">
               <p class="footerTitle">Make Money With Us</p>
-         <p class="footerText">Trade on Trading Post</p>
-    <p class="footerText">Advertise</p>
-       </div>
+	       <p class="footerText">Trade on Trading Post</p>
+		<p class="footerText">Advertise</p>
+	     </div>
             <div class="footerSection">
               <p class="footerTitle">Let Us Help You</p>
-         <p class="footerText">Your Account</p>
-    <p class="footerText">Your Trades</p>
-       </div>
+	       <p class="footerText">Your Account</p>
+		<p class="footerText">Your Trades</p>
+	     </div>
       </footer>
     
 

@@ -7,12 +7,9 @@ angular.module('trading-post').controller('inventoryController', function($scope
 	$scope.gs = [];
 	$scope.gs2 = [];
 
-   	// NEED COOKIES TO KNOW WHICH USER I AM
-   	// NEED COOKIE CODE
-
 	// Sample code for how to do queries for inventory
-	// *tested already*
 	// Will get data from view (user) and bind data to view
+	// Need to know which user I am
 
 	$scope.query = { collName: 'gs', key: 'owner', value: 'Cosi'};
 	$scope.query2 = {
@@ -59,7 +56,7 @@ angular.module('trading-post').controller('inventoryController', function($scope
     	   		 console.log('Inventory POST error. Received: ', responseData);
     	  	 });
 	};
-	
+
 	  $scope.searchGS( $scope.query );
 	//$scope.insertGS( $scope.query2 );
 
