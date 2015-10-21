@@ -42,44 +42,47 @@
 
 	<h3>Create New User:</h3>
 	<br>
-	<form class="form-horizontal" role="form" action="/createUser" method="post">
+	<form class="form-horizontal" name="signupForm" role="form" action="/createUser" method="post">
 	  <div class="form-group">
 	    <label class="col-sm-2 control-label">Username:</label>
 	    <div class="col-sm-10">
-	    <input type="text" name="user" placeholder="Username" required>
-	    </div>
+	       <input type="text" name="username" placeholder="Username" maxLength="16" required>
+		</div>
 	  </div> 
 	  <div class="form-group">
 	    <label class="col-sm-2 control-label">Email:</label>
 	    <div class="col-sm-10">
-	    <input type="email" name="email" placeholder="Email" required>
+	    <input type="email" name="email" placeholder="Email" maxLength="40" required>
 	    </div>
 	  </div>
 	  <div class="form-group">
 	    <label class="col-sm-2 control-label">Phone:</label>
 	    <div class="col-sm-10">
-	    <input type="text" name="phone" placeholder="Phone" required>
+	    <input type="text" name="phone" placeholder="Phone" maxLength="12" required>
 	    </div>
 	  </div>
 	  <div class="form-group">
 	    <label class="col-sm-2 control-label" style="padding-right:5px;">Zip Code:</label>
 	    <div class="col-sm-10">
-	    <input type="text" name="zip" placeholder="Zip Code" required>
+	    <input type="text" name="zip" placeholder="Zip Code" maxLength="16" required>
 	    </div>
 	  </div>
 	  <div class="form-group">
  	   <label class="col-sm-2 control-label">Password:</label>
  	     <div class="col-sm-10">
-	      <input type="password" name="passw1" placeholder="Password" required>
+	      <input type="password" name="passw1" placeholder="Password" maxLength="16" required>
 	     </div>
 	  </div>
  	 <div class="form-group">
  	   <label class="col-sm-2 control-label">Repeat:</label>
 	     <div class="col-sm-10">
- 	      <input type="password" name="passw2" placeholder="Repeat Password" required>
+ 	      <input type="password" name="passw2" placeholder="Repeat Password" maxLength="16" required>
  	     </div>
 	  </div>
 	  <hr>
+		<span style="color:red"><%=userNotif%></span>
+		<span style="color:red"><%=pwNotif%></span>
+		<br><br>
 		<button class="btn btn-success" type="submit">
 		<span class="glyphicon glyphicon-user"></span>  Create New User
 		</button>

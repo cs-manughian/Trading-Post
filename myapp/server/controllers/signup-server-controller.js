@@ -7,11 +7,7 @@ exports.display = function(req, res){
 	res.render('signup', 
 		{
 			userNotif: '',
-			emailNotif: '',
-			phoneNotif: '',
-			zipNotif: '',
-			pwNotif: '',
-			repeatNotif: ''
+			pwNotif: ''
 		});
 }
 
@@ -24,31 +20,65 @@ exports.createUser = function(req, res){
  	collection.findOne({ username: req.body.username }, function (err, user) {
       		if(!user) {
 
-        		// User doesn't exist so we can create this user
+        		// User doesn't exist so we can create this user		
 
-			// Check if data is valid			
+			// Check both passwords are correct
+			if( req.body.passw1 !== req.body.passw2 ) {
+				res.render('signup', { userNotif: '', pwNotif: 'Entered passwords do not match.' });
+			} else {
 
-			// Insert new user data into users collection
-			/*
-			collection.insert( query, function (err, result) {
-				if (err) {
-        				console.log(err);
-						
-      				} else {
+			  // Otherwise
+			  // Insert new user data into users collection
+
+			  /* For wishlist: 
+				wishlist: [	    
+					    {				
+						name: "",
+						type: "",
+						qty: 0,
+						importance: 0
+					     },{				
+						name: "",
+						type: "",
+						qty: 0,
+						importance: 0
+					     }
+				]
+			  */
+
+			  collection.insert( 
+				{
+					username: req.body.username,
+					password: req.body.passw1,
+					email: req.body.email,
+					phoneNumber: req.body.phone,
+					dataCreated: (new Date()).toString(),
+					rating: {
+						one: 0,
+						two: 0,
+						three: 0,
+						four: 0,
+						five: 0
+					},
+	 				wishList: []
+
+				}, function (err, result) {
+
+				      if (err) {
+        				  console.log(err);	
+      				      } else {
         				
-					// User is created. Now redirect to home page.
-					res.redirect('/');
-				}				
-    			});
-			*/
+					   // User is created. Now redirect to home page.
+					   res.redirect('/');
+				      }				
+    			  });
+		       }
 
     	       } else {
 
         		// User already exists
-
 			// Notify user
-						
-			//res.render('signup', {});
+			res.render('signup', {userNotif: 'User already exists.', pwNotif: ''});
 
       		}
     	});

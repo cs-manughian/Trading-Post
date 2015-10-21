@@ -28,7 +28,6 @@ module.exports = function (app) {
 	// For logging out the user
 	app.get('/logout', login.logOutUser);
 
-
 	//Handle data (model) requests
 	MongoClient.connect("mongodb://localhost:27017/tradingpost", function(err, db) {
     			if (err) { 
@@ -43,8 +42,9 @@ module.exports = function (app) {
 
 				// Session middleware for all routes
 
-				//Handle page requests
-
+				//=================================================================//
+				// Handle page requests
+				//=================================================================//
 				// For index page
 				app.get('/', attachDB, login.requiredAuthentication, index.display);
 
@@ -55,11 +55,15 @@ module.exports = function (app) {
 				app.get('/login', attachDB, function(req, res, next) {
    		 			res.render('login', {status:''});
 				});
-				
+
 				// For anything else (like ng-view partials)
 				app.get('/*', attachDB, login.requiredAuthentication, index.display);
 
 
+
+				//=================================================================//
+				// For querying the model ( the database )
+				//=================================================================//
 				// For recent posts
 				app.post('/recent', attachDB, goodsServices.sendRecentPosts);
 
@@ -68,6 +72,9 @@ module.exports = function (app) {
 
 				//For login form
 				app.post('/login', attachDB, login.logInUser);
+
+				//For getting search results
+				app.post('/results', attachDB, goodsServices.searchGS);
 
 				// For any page 
 				app.post('/update', attachDB, crudOps.updateDocument);

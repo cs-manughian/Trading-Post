@@ -48,3 +48,49 @@ exports.sendRecentPosts = function (req,res) {
 
 }
 
+
+
+
+// Retrieve search from the database
+// Search will have category, good/service, and zipcode
+
+exports.searchGS = function (req,res) {
+
+/*
+		// Get the documents collection
+    		var collection = req.db.collection("gs");
+				
+    		// Find document based on today's date and time
+		// 1 is for ascending and -1 is for descending order
+
+		// We need to find it based on category, GS (name), and zipcode
+		// "$regex" is a regular expression. 
+		// "i" means "case insensitive"
+	
+		//Search by substring to get more results
+		var gs = req.gsName;
+		var subName = substring(0, Math.ceil( gs.length/2 ));
+
+    		collection.find( {name: { $regex: /gs/i }}, 
+				   {zipcode: req.zipcode}, 
+				   {category: req.category})
+			   .sort({datePosted: -1}).toArray(function (err, results) {
+
+      				if (err) {
+        				console.log(err);
+
+      				} else if (results.length) {
+
+					// Send every result to the client
+					res.end( JSON.stringify(results) );
+
+						
+      				} else {
+        				console.log('No document(s) found with defined "find" criteria!');
+      					res.end();
+				}				
+    		});
+*/
+
+}
+

@@ -19,6 +19,8 @@
 	<script type="text/javascript" src="trading-post/controllers/recentposts-client-controller.js"></script>
 	<script type="text/javascript" src="trading-post/controllers/inventory-client-controller.js"></script>
 	<script type="text/javascript" src="trading-post/controllers/profile-client-controller.js"></script>
+	<script type="text/javascript" src="trading-post/controllers/results-client-controller.js"></script>
+
 </head>
 
 <body>
@@ -33,7 +35,7 @@
    		<div class="input-group input-group-search searchBar">
 
 		<!--Use ngOptions here-->
-		 <select class="form-control" style="width:30%">
+		 <select name="category" class="form-control" style="width:30%">
 			<option>All</option>
 			<option>Beauty</option>
 			<option>Clothing</option>
@@ -47,12 +49,12 @@
 			<option>Outdoors</option>
 		 </select> 
 
-     	  	 <input type="text" class="form-control" placeholder="Search..." style="width:45%" required>
-		 <input type="text" class="form-control" placeholder="Zipcode..." style="width:25%" required>
+     	  	 <input type="text" name="gsName" class="form-control" placeholder="Search..." style="width:45%" required>
+		 <input type="text" name="zipcode" class="form-control" placeholder="Zipcode..." style="width:25%" required>
 
      	 	  <span class="input-group-addon">
-     	  	     <button class="btn-search" ng-disabled="search.$invalid">
-     	  	         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+     	  	     <button class="btn-search" onclick="window.location.href='/#results';"> 
+     	  	         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>  
      	  	     </button>
      	  	  </span>
 

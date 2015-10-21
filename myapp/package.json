@@ -8,7 +8,7 @@
   "dependencies": {
     "express": "3.21.2",
     "ejs": "2.3.4",
-    "mongodb": "*",
+    "mongodb": "2.4.9",
     "monk": "*",
     "angularjs": "*",
     "body-parser": "~1.14.1"
