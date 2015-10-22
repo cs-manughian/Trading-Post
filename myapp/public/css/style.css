@@ -7,7 +7,7 @@ html {
 body {
   min-height: 100%;
   min-width: 100%;
-  padding: 0px 40px 0px 40px;
+  padding: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
 }
@@ -19,17 +19,20 @@ a {
 form {
   width: 550px;
   overflow: hidden;
+  padding-left: 35px;
+  margin-top: 25px;
 }
 
 .searchBar {
   width: 500px;
-  margin: 25px 0px 0px 8px;
+  margin: 16px 0px 0px 8px;
 }
 
 
 .header {
   background-color: #337AB7;
   height: 175px;
+  position: relative;
 }
 
 .header-content {
@@ -92,4 +95,84 @@ footer {
   color: #337AB7;
   margin: 5px 75px 5px 75px;
 
+}
+
+
+/**Recent Post**/
+.posts {
+    overflow: hidden;
+    padding: 0;
+    width: 1010px;
+}
+
+.ng-binding.ng-scope {
+    float: left;
+    padding-right: 30px;
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+
+/**Header**/
+.menu {
+  clear: both;
+  position: absolute;
+  bottom: 15px;
+}
+
+.input-group-addon {
+    background: #a9d04b !important;
+}
+
+.posts img {
+    width: 300px;
+    height: 200px;
+}
+
+.post-blurb {
+  padding-top: 10px;
+}
+
+.about {
+    width: 1000px;
+}
+
+.map {
+  text-align: center;
+  margin-top: 20px;
+}
+
+h3 {
+  color: #a9d04b;
+}
+
+.profile-img {
+    float: left;
+    padding-right: 20px;
+}
+
+.profile-menu li {
+    list-style: none;
+}
+
+.profile {
+    width: 400px;
+    border-right: 1px solid #ddd;
+    float: left;
+}
+
+.profile-feedback {
+    overflow: hidden;
+    padding-left: 20px;
+}
+
+.profile-trades {
+    clear: both;
+    padding-top: 50px;
+}
+
+.footer-wrapper {
+    overflow: hidden;
+    width: 800px;
+    margin: 0 auto;
 }
