@@ -3,7 +3,6 @@
 <head>
 
   	<title>Trading Post</title>
-
   	<meta name="description" content="">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
@@ -30,11 +29,10 @@
 
      	  <div class="logo"><a href="#"><img src="img/tradingLogo.png"></a></div>
 
-      	  <form name="search" role="form">
-		
+      	  <form class="navbar-form" name="searchForm" role="form" action="#/results" method="get">
+
    		<div class="input-group input-group-search searchBar">
 
-		<!--Use ngOptions here-->
 		 <select name="category" class="form-control" style="width:30%">
 			<option>All</option>
 			<option>Beauty</option>
@@ -52,11 +50,9 @@
      	  	 <input type="text" name="gsName" class="form-control" placeholder="Search..." style="width:45%" required>
 		 <input type="text" name="zipcode" class="form-control" placeholder="Zipcode..." style="width:25%" required>
 
-     	 	  <span class="input-group-addon">
-     	  	     <button class="btn-search" onclick="window.location.href='/#results';"> 
-     	  	         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>  
-     	  	     </button>
-     	  	  </span>
+            	 <div class="input-group-btn">
+                	<button class="btn btn-default" style="background: #A4CF43;"><i class="glyphicon glyphicon-search green"></i></button>
+            	 </div>
 
     	   	 <input type="hidden" name="mode" value="web"/>
 
@@ -65,15 +61,15 @@
       	   </form>
 
 
-          <br><br><br>
+          <br><br>
           <a href="#/about" class="barLink">About</a>
           <a href="#/recent" class="barLink">Recent Posts</a>
 
 	   <% if( locals.username ) { %>
              		<a href="#/profile" class="barLink">Your Profile</a>
 		<span id="logoutLink">
-	      		<b><%=usergreeting %></b>
-	      		<a href="logout" class="barLink">Log out</a>
+	      		<%=usergreeting %>
+	      		<a href="logout" class="barLink"><b>Log out</b></a>
 		</span>
 	   <% } else { %>
 	      <a href="/signup" class="barLink">Sign Up</a>

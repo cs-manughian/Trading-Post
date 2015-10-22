@@ -2,5 +2,17 @@
   <br>
   <h3>Search Results</h3>
   <br>
+ <div ng-repeat="result in searchResults track by $index">
+  <img src="{{result.imgUrl}}">
+  <br>
+   Name: {{result.name}} 
+  <br>
+   Type: {{result.type}}
+  <br> 
+   Owner: {{result.owner}}
+  <br>
+   Quantity: {{result.quantity}}
+  <br>
+  </div>
 
 </div>

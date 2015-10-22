@@ -36,7 +36,11 @@ exports.logInUser = function(req, res){
 				
 				// So just redirect to the home page
 				// after session is created
-				res.render('index', {usergreeting: 'Hello, '+user.username+'! '});
+			
+				//res.render('index', {usergreeting: 'Hello, '+user.username+'! '});
+				res.locals.usergreeting = 'Hello, '+user.username+'! ';
+				res.redirect('/');
+				
 			});
 
 			req.session.save();
@@ -51,7 +55,7 @@ exports.logInUser = function(req, res){
 
 exports.logOutUser = function(req, res){
     req.session.destroy(function () {
-	 res.locals.username = '';
+	res.locals.username = '';
         res.redirect('/');
     });
 

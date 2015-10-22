@@ -3,13 +3,19 @@
   <br>
   <h3>Inventory</h3>
   <br>
-
-  <ul ng-repeat="item in gs">
-  <li>Name: 	{{item.name}} </li>
-	<li>Type: 	{{item.type}} </li>
-	<li>Category:	{{item.category}} </li>
-	<li>Quantity:	{{item.quantity}} </li>
-	<li>Date Posted: {{item.datePosted}} </li>
-  <ul>
+  <div ng-repeat="item in gs">
+  	<img src="{{item.imgUrl}}">
+  	<br>
+  	 Name: {{item.name}} {{item.type}}  
+  	<br>
+  	 Owner: {{item.owner}}
+  	<br>
+  	 Quantity: {{item.quantity}}
+  	<br>
+	 Category: {{item.category}}
+	<br>
+	 Date Posted: {{item.datePosted}}
+	<br>
+  </div>
     
 </div>
