@@ -56,27 +56,34 @@ exports.sendRecentPosts = function (req,res) {
 
 exports.searchGS = function (req,res) {
 
+
 		// Get the documents collection
     		var collection = req.db.collection("gs");
-				
-    		// Find document based on today's date and time
-		// 1 is for ascending and -1 is for descending order
-
-		// We need to find it based on category, GS (name), and zipcode
-		// "$regex" is a regular expression. 
-		// "i" means "case insensitive"
+			
 
 		//Search by substring to get more results
-		console.log("Search query: ", req.body);
+		var gsName  = req.body.gsName;
+		var subName = gsName.substring(0, Math.ceil( gsName.length/2 ));
 
-		var gs = req.body.gsName;
-		var subName = gs.substring(0, Math.ceil( gs.length/2 ));
-		
-		//{name: { $regex: /gs*/i }}
-    		collection.find( {name: req.body.gsName,
-				    zipcode: req.body.zipcode, 
-				    category: req.body.category})
-			   .sort({datePosted: -1}).toArray(function (err, results) {
+		// pattern, attributes
+		var gs = new RegExp(subName, 'i');
+
+		// Use i for case insensitive and / for "like"
+		var query = {   name: gs,
+			 	zipcode: req.body.zipcode, 
+				category: req.body.category };
+
+
+		// If no zipcode is entered, search any zipcode
+		// Use regular expression /./ to search all
+		if( req.body.zipcode == '' ) 
+			query.zipcode = /./;
+
+		if( req.body.category == 'All' )	
+			query.category = /./;
+		console.log(query);
+
+    		collection.find(query).sort({datePosted: -1}).toArray(function (err, results) {
 
       				if (err) {
         				console.log(err);
