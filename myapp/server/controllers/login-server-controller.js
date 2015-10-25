@@ -4,7 +4,7 @@
 */
 
 
-exports.logInUser = function(req, res){
+exports.logIn = function(req, res){
 
 
     var collection = req.db.collection("users");
@@ -53,7 +53,7 @@ exports.logInUser = function(req, res){
 
 
 
-exports.logOutUser = function(req, res){
+exports.logOut = function(req, res){
     req.session.destroy(function () {
 	res.locals.username = '';
         res.redirect('/');
@@ -61,17 +61,6 @@ exports.logOutUser = function(req, res){
 
 }
 
-exports.getLoginInfo = function(req, res){
-	if(req.session && req.session.user) {
-		// The user logged in
-		// User is authorized
-		res.send(req.session.user);			
-
-	} else {
-		// User is not authorized
-		res.send('0');
-	}
-}
 
 exports.requiredAuthentication = function(req, res, next){
 
@@ -109,8 +98,8 @@ exports.requiredAuthentication = function(req, res, next){
 	 // They must login first
         req.session.error = 'Access denied!';
 	 
-	 //res.redirect('login');
-	 next();
+	next();
   }
 
 };
+

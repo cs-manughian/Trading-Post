@@ -1,20 +1,21 @@
 <div ng-controller="recentController">
   <br>
   <h3>Recent Posts</h3>
-	
+
   <br>
+
   <ul class="posts">
-  <li ng-repeat="post in recentPosts">
-  <img src="{{post.imgUrl}}">
-  <br>
-  <div class="post-blurb">Type: {{post.type}}</div>
-  Name: {{post.name}} 
-  <br>
-   Owner: {{post.owner}}
-  <br>
-   Quantity: {{post.quantity}}
-  <br>
-</li>
-</ul>
+  	<li ng-repeat="post in recentPosts">
+ 		<img src="{{post.imgUrl}}">
+  		<br>
+  		<div class="post-blurb">Type: {{post.type}}</div>
+ 		 Name: {{post.name}} 
+  		<br>
+  		Owner: {{post.owner}}
+ 		<br>
+  		Quantity: {{post.quantity}}
+ 		<br>
+	</li>
+  </ul>
 
 </div>

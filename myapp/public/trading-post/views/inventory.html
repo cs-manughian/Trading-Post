@@ -1,9 +1,19 @@
 <div ng-controller="inventoryController">
 
   <br>
-  <h3>Inventory</h3>
+	<h3>
+		<a href="#/profile">Profile</a>
+		<span class="my-breadcrumb"> / </span>
+		Inventory
+	</h3>
   <br>
-  <div ng-repeat="item in gs">
+
+  <div ng-show="!isInventoryFound">
+	You don't have anything in your inventory! Click "Add" to add a good
+	 or service to your inventory. 
+  </div>
+
+  <div ng-repeat="item in inventory">
   	<img src="{{item.imgUrl}}">
   	<br>
   	 Name: {{item.name}} {{item.type}}  
@@ -17,5 +27,6 @@
 	 Date Posted: {{item.datePosted}}
 	<br>
   </div>
-    
+
+
 </div>

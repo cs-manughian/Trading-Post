@@ -1,54 +1,48 @@
 // Create a controller and add to trading-post module
-angular.module('trading-post').controller('inventoryController', function($scope, $http){
+angular.module('trading-post').controller('inventoryController', function($scope, $http, $window, GsService, UserService, AllService){
 	
+	// Vars
 	$scope.name ='inventory';
+	$scope.isInventoryFound = false;
+	$scope.inventory = {};
 
-	$scope.inventory = [];
-	$scope.gs = [];
-	$scope.gs2 = [];
-
-	// Sample code for how to do queries for inventory
-	// Will get data from view (user) and bind data to view
-	// Need to know which user I am
-
-	$scope.query = { collName: 'gs', key: 'owner', value: 'Cosi'};
-	$scope.query2 = {
-				collName: "gs",
-				owner: "Mana",
-				zipcode: "90277",	
-				name: "Oranges",
-				type: "Good",
-				quantity: "5",
-				imgUrl: "./img/placeHolder.png",
-				category: "Food",
-				datePosted: (new Date()).toString()
-			
-			};
-
-	$scope.query3 = { collName: 'gs', key: "owner", values: ["John"]};
-	$scope.query4 = { collName: 'gs', oldkey: "owner", oldvalue: "Mana", newkey: "owner", newvalue: "John"};
-
-
-	$scope.searchGS = function( q ) {
-
-		$http.post('/search', q ).
+	// Functions
+	$scope.getUser = function() {
+		UserService.getUserInfo().
 		   success(function(responseData) {
 
-			var i;
-			for( i = 0; i < responseData.length; i++ ){
-				$scope.gs[i] = responseData[i];
+			// if no user data
+			if( responseData == '0' ) {
+				// Force login
+				$window.location.href = "/login";
+			}else{
+				// We got the user's data
+				$scope.user = responseData;
 			}
+    		   }).
+		   error(function(responseData) {
+    	   		 console.log('Inventory GET error. Received: ', responseData);
+    	  	 });
+	};
 
+	$scope.getInventory = function() {
+		 GsService.getInventory().
+		   success(function(responseData) {
+			$scope.inventory = responseData;
+
+			$scope.isInventoryFound = !(  responseData == null 
+					  	   || responseData == undefined 
+					  	   || responseData == "");		
     		   }).
 		   error(function(responseData) {
     	   		 console.log('Inventory POST error. Received: ', responseData);
     	  	 });
 	};
 
-
-	$scope.insertGS = function( q2 ) {
-
-		$http.post('/insert', q2).
+	$scope.addToInventory = function( q ) {
+		// Tell it to use the gs collection
+		q.collName = "gs";
+		AllService.insert( q ).
 		   success(function(responseData) {
 			console.log('Successful GS insert'); 
     		   }).
@@ -57,11 +51,22 @@ angular.module('trading-post').controller('inventoryController', function($scope
     	  	 });
 	};
 
-	  $scope.searchGS( $scope.query );
-	//$scope.insertGS( $scope.query2 );
 
-	// No success/err function for testing
-	//$http.post('/remove', $scope.query3);	
-	//$http.post('/update', $scope.query4);
+	$scope.removeFromInventory = function( q ) {
+		// Tell it to use the gs collection
+		q.collName = "gs";
+		AllService.remove( q ).
+		   success(function(responseData) {
+			console.log('Successful GS remove'); 
+    		   }).
+		   error(function(responseData) {
+    	   		 console.log('Inventory POST error. Received: ', responseData);
+    	  	 });
+	};
+
+	// "Main"
+	 $scope.getUser();
+	 $scope.getInventory();
+		
 });	
 

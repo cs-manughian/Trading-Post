@@ -6,33 +6,34 @@
   <br>
   <br>
   <div class="profile">
-  <div class="profile-img">
-  <img src="img/bareProfile.png">
-</div>
+     <div class="profile-img">
+        <img src="img/bareProfile.png">
+     </div>
 
-  <h4>{{user.username}}</h4>
-  <h5>Long Beach, CA</h5>
-  <ul class="profile-menu">
-     <li><a href="#/profile/inventory" class="profileLink">Inventory</a></li>
-     <li><a href="#/profile/wishlist" class="profileLink">Wishlist</a></li>
-     <li><a href="#/profile/messages" class="profileLink">Messages</a></li>
-     <li><a href="#/profile/trades" class="profileLink">Trades</a></li>
-   </ul>
- </div>
+     <h4>{{user.username}}</h4>
+     <h5>ZIP {{user.zipcode}}</h5>
+     <ul class="profile-menu">
+        <li><a href="#/profile/inventory" class="profileLink">Inventory</a></li>
+        <li><a href="#/profile/wishlist" class="profileLink">Wishlist</a></li>
+        <li><a href="#/profile/messages" class="profileLink">Messages</a></li>
+        <li><a href="#/profile/trades" class="profileLink">Trades</a></li>
+      </ul>
+  </div>
 
- <div class="profile-feedback">
-  <h4>Feedback Score</h4>
- </div>
+  <div class="profile-feedback">
+ 	<h4>Feedback Score</h4>
+ 	{{feedbackScore}} Star Rating
+ 	<br>
+	Out of {{totalRatings}} ratings
+  </div>
 
 
- <div class="profile-trades">
- <div>
-  <br>
-  <h3>Goods and Services for Trade</h3>
-  
-  <br>
-
-</div>
-</div>
+  <div class="profile-trades">
+       <div>
+           <br>
+           <h3>Recent Feedback</h3>
+           <br>
+       </div>
+  </div>
 
 </div>

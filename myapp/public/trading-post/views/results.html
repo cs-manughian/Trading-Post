@@ -3,18 +3,22 @@
   <h3>Search Results</h3>
   <br>
 
+  <h4 ng-show="!isFound">
+	Sorry! No results found...Search something else. :]
+  </h4>
+
   <ul class="posts">
-  <li ng-repeat="result in searchResults track by $index">
-  <img src="{{result.imgUrl}}">
-  <br>
-  <div class="post-blurb">Type: {{result.type}}</div>
-  Name: {{result.name}} 
-  <br>
-   Owner: {{result.owner}}
-  <br>
-   Quantity: {{result.quantity}}
-  <br>
-</li>
-</ul>
+  	<li ng-repeat="result in searchResults track by $index">
+  		<img src="{{result.imgUrl}}">
+  		<br>
+  		<div class="post-blurb">Type: {{result.type}}</div>
+  		Name: {{result.name}} 
+  		<br>
+   		Owner: {{result.owner}}
+  		<br>
+   		Quantity: {{result.quantity}}
+  		<br>
+	</li>
+  </ul>
 
 </div>

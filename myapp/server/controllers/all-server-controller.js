@@ -8,6 +8,7 @@
 *    searchDocuments
 *    updateDocument
 *    removeDocument
+*  which can be used for any collection ("all")
 *
 */
 
@@ -24,10 +25,8 @@ exports.updateDocument = function (req,res) {
 		// just have the data
 		delete req.body.collName;
 
-		oldQuery = {};
-		newQuery = {};
-		oldQuery[req.body.oldkey] = req.body.oldvalue;
-		newQuery[req.body.newkey] = req.body.newvalue;
+		oldQuery = req.body.oldQuery;
+		newQuery = req.body.newQuery;
 
     		collection.update(oldQuery, {$set: newQuery}, function (err, result) {
       				
@@ -121,20 +120,15 @@ exports.searchDocuments = function (req,res) {
 		delete req.body.collName;
 
 		var query = {};
-		
-		if( req.body.value )
-			query[req.body.key] = req.body.value;
-		else
-			query[req.body.key] = {$exists: true};
 
-    		collection.find( query ).toArray(function (err, result) {
+		collection.find( req.body ).toArray(function (err, result) {
       				
 				if (err) {
         				console.log(err);
 
       				} else if (result.length) {
 
-       					console.log('Found:', result);
+     					console.log('Found:', result);
 					
 					// Send the data to the client
 					res.end( JSON.stringify(result) );

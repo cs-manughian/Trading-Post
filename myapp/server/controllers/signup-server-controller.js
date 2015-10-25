@@ -51,6 +51,7 @@ exports.createUser = function(req, res){
 					username: req.body.username,
 					password: req.body.passw1,
 					email: req.body.email,
+					zipcode: req.body.zip,
 					phoneNumber: req.body.phone,
 					dataCreated: (new Date()).toString(),
 					rating: {

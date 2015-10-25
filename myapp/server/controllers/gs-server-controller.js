@@ -67,15 +67,15 @@ exports.searchGS = function (req,res) {
 		// "i" means "case insensitive"
 
 		//Search by substring to get more results
-		console.log(req.body.myQuery);
+		console.log("Search query: ", req.body);
 
-		var gs = req.body.myQuery.gsName;
+		var gs = req.body.gsName;
 		var subName = gs.substring(0, Math.ceil( gs.length/2 ));
 		
 		//{name: { $regex: /gs*/i }}
-    		collection.find( {name: req.body.myQuery.gsName,
-				    zipcode: req.body.myQuery.zipcode, 
-				    category: req.body.myQuery.category})
+    		collection.find( {name: req.body.gsName,
+				    zipcode: req.body.zipcode, 
+				    category: req.body.category})
 			   .sort({datePosted: -1}).toArray(function (err, results) {
 
       				if (err) {
@@ -95,3 +95,38 @@ exports.searchGS = function (req,res) {
 
 }
 
+
+
+// Get inventory based on current user
+// Automatically sort by name
+exports.findInventory = function (req,res) {
+
+		// Search goods / services collection
+    		var collection = req.db.collection("gs");
+
+		// Find goods / services belonging to current user
+
+		if( req.session && req.session.user ){
+
+    		    collection.find({owner: req.session.user.username})
+			  .sort({name: -1}).toArray(function (err, results) {
+
+      				if (err) {
+        				console.log(err);
+
+      				} else if (results.length) {
+		
+					// Send every result to the client
+					res.end( JSON.stringify(results) );
+						
+      				} else {
+        				console.log('No document(s) found with defined "find" criteria!');
+      					res.end();
+				}				
+    		    });
+
+		}else{
+
+		    res.end();
+		}
+}
