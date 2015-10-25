@@ -4,7 +4,9 @@ angular.module('trading-post').controller('resultsController', function($scope, 
 	$scope.name ='results';
 
 	$scope.isFound = false;
+	$scope.isInvEmpty = false;
 	$scope.searchResults = {};
+	$scope.inventory = {};
 
 	$scope.getSearchResults = function() {
 
@@ -22,7 +24,20 @@ angular.module('trading-post').controller('resultsController', function($scope, 
     	  	 });
 	};
 
-	$scope.getSearchResults();
+	$scope.getInventory = function() {
+		 GsService.getInventory().
+		   success(function(responseData) {
+			$scope.inventory = responseData;
+			$scope.isInvEmpty = (  responseData == null 
+					    || responseData == undefined 
+					    || responseData == "");		
+    		   }).
+		   error(function(responseData) {
+    	   		 console.log('Results POST error. Received: ', responseData);
+    	  	 });
+	};
 
+	$scope.getSearchResults();
+	$scope.getInventory();
 });	
 

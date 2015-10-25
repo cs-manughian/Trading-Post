@@ -4,7 +4,7 @@
 
 
 //An AngularJS module defines an application
-var app = angular.module('trading-post', ['ngRoute']);
+var app = angular.module('trading-post', ['ngRoute', 'modal.directive']);
 
 console.log('Angular app is now running...');
 

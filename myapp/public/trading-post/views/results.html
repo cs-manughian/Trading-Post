@@ -7,6 +7,8 @@
 	Sorry! No results found...Search something else. :]
   </h4>
 
+  <div ng-controller="modalController" class="container">
+
   <ul class="posts">
   	<li ng-repeat="result in searchResults track by $index">
   		<img src="{{result.imgUrl}}">
@@ -18,7 +20,28 @@
   		<br>
    		Quantity: {{result.quantity}}
   		<br>
+		<button ng-click="toggleModal()" class="btn btn-default">Request to Trade</button>
 	</li>
   </ul>
+
+  <modal title="Select Good/Service to Trade:" visible="showModal">
+
+    <span ng-show="isInvEmpty">
+	There's nothing in your inventory!
+	<br>
+	Add goods or services to your inventory to begin trading.
+	<br>
+    </span>
+	
+    <form ng-show="!isInvEmpty" role="form">
+      <div class="field radio_field" ng-repeat="item in inventory">
+		<input type="radio" name="item"/>
+        	<label for="item" style="vertical-align:middle;">{{item.name}}</label>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-default">Submit Request</button>
+    </form>
+  </modal>
+  </div>
 
 </div>
