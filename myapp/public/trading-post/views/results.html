@@ -11,7 +11,7 @@
 
   <ul class="posts">
   	<li ng-repeat="result in searchResults track by $index">
-  		<img src="{{result.imgUrl}}">
+  		<img ng-if="result.imgUrl" ng-src="{{result.imgUrl}}">
   		<br>
   		<div class="post-blurb">Type: {{result.type}}</div>
   		Name: {{result.name}} 
@@ -20,7 +20,7 @@
   		<br>
    		Quantity: {{result.quantity}}
   		<br>
-		<button ng-click="toggleModal()" class="btn btn-default">Request to Trade</button>
+		<button ng-click="toggleModal(); saveClickedGS(result);" class="btn btn-default">Request to Trade</button>
 	</li>
   </ul>
 
@@ -33,13 +33,17 @@
 	<br>
     </span>
 	
-    <form ng-show="!isInvEmpty" role="form">
-      <div class="field radio_field" ng-repeat="item in inventory">
-		<input type="radio" name="item"/>
-        	<label for="item" style="vertical-align:middle;">{{item.name}}</label>
+    <form ng-show="!isInvEmpty" role="form" name="tradeForm">
+      <div class="field radio_field" ng-repeat="invItem in inventory">
+
+		<input type="radio" name="selection" value="invItem._id" ng-model="value" ng-change="saveOfferedGS( invItem );"/>
+
+        	<label for="item" style="vertical-align:middle;">{{invItem.name}}</label>
       </div>
       <br>
-      <button type="submit" class="btn btn-default">Submit Request</button>
+      <button type="submit" class="btn btn-default" ng-disabled="tradeForm.$pristine" 
+		ng-click="sendTradeRequest();" data-dismiss="modal">Submit Request</button>
+      <br>
     </form>
   </modal>
   </div>

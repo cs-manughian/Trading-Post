@@ -15,6 +15,8 @@ exports.createUser = function(req, res){
 
 	var collection = req.db.collection("users");	
 
+	var currDateAndTime = new Date().toISOString().replace('T', ' ').substr(0, 19);
+
 	// Check if user already exists
 	// Username is unique
  	collection.findOne({ username: req.body.username }, function (err, user) {
@@ -53,7 +55,7 @@ exports.createUser = function(req, res){
 					email: req.body.email,
 					zipcode: req.body.zip,
 					phoneNumber: req.body.phone,
-					dataCreated: (new Date()).toString(),
+					dataCreated: currDateAndTime,
 					rating: {
 						one: 0,
 						two: 0,

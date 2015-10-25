@@ -14,7 +14,7 @@
   </div>
 
   <div ng-repeat="item in wishList">
-  	<img src="{{item.imgUrl}}">
+  	<img ng-if="item.imgUrl" ng-src="{{item.imgUrl}}">
   	<br>
   	 Name: {{item.name}} 
   	<br>

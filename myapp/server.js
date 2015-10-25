@@ -17,7 +17,7 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.cookieParser());
-app.use(express.session({secret: 's3a45lv76py0w9q2yt43', expires: new Date(Date.now() + 60 * 10000)}));
+app.use(express.session({secret: 's3a45lv76py0w9q2yt43', expires: new Date(Date.now() + 60 * 100000)}));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());

@@ -1,5 +1,5 @@
 // Create a controller and add to trading-post module
-angular.module('trading-post').controller('tradesController', function($scope, $http, $window, GsService, UserService, AllService){
+angular.module('trading-post').controller('tradesController', function($scope, $http, $window, TradesService, UserService){
 	
 	// Vars
 	$scope.name ='trades';

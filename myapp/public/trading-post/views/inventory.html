@@ -15,7 +15,7 @@
 
   <ul class="posts">
      <li ng-repeat="item in inventory">
-  	<img src="{{item.imgUrl}}">
+  	<img ng-if="item.imgUrl" ng-src="{{item.imgUrl}}">
   	<br>
   	<div class="post-blurb">Name: {{item.name}} {{item.type}}</div> 
   	 Owner: {{item.owner}}

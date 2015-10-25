@@ -1,5 +1,5 @@
 // Create a controller and add to trading-post module
-angular.module('trading-post').controller('resultsController', function($scope, $http, GsService){
+angular.module('trading-post').controller('resultsController', function($scope, $http, GsService, TradesService){
 	
 	$scope.name ='results';
 
@@ -7,6 +7,7 @@ angular.module('trading-post').controller('resultsController', function($scope, 
 	$scope.isInvEmpty = false;
 	$scope.searchResults = {};
 	$scope.inventory = {};
+	$scope.tradeItems = {};
 
 	$scope.getSearchResults = function() {
 
@@ -36,6 +37,34 @@ angular.module('trading-post').controller('resultsController', function($scope, 
     	   		 console.log('Results POST error. Received: ', responseData);
     	  	 });
 	};
+
+	$scope.sendTradeRequest = function() {
+
+		 TradesService.requestTrade( $scope.tradeItems ).
+		   success(function(responseData) {
+			 // Successful trade request		
+    		   }).
+		   error(function(responseData) {
+    	   		 console.log('Results POST error. Received: ', responseData);
+    	  	 });
+	};
+
+
+	// Need to save the clicked item so we 
+	// know what the user is requesting to trade
+	$scope.saveClickedGS = function( item ) {
+		$scope.tradeItems.clickedGS = item;
+	};
+
+	// Need to save the offered item so we 
+	// know what the user is offering to trade
+	$scope.saveOfferedGS = function( item ) {
+		$scope.tradeItems.offeredGS = item;
+	};
+
+
+
+	// "Main"
 
 	$scope.getSearchResults();
 	$scope.getInventory();

@@ -18,6 +18,7 @@ module.exports = function (app) {
 	var user	    = require('../controllers/user-server-controller.js');
 	var anyPage	    = require('../controllers/all-server-controller.js');
 	var goodsServices   = require('../controllers/gs-server-controller.js');
+	var trades	    = require('../controllers/trades-server-controller.js');
 
 	//=======Specify functions to handle specific HTTP requests======//
 
@@ -72,7 +73,10 @@ module.exports = function (app) {
 				// For getting search results
 				app.post('/results', attachDB, goodsServices.searchGS);
 
-				// For getting user's inventory
+				// For requesting to trade
+				app.post('/reqTrade', attachDB, trades.requestTrade);
+
+				// For getting current user's inventory
 				app.post('/inventory', attachDB, goodsServices.findInventory);
 
 				// For any page 
@@ -92,5 +96,6 @@ module.exports = function (app) {
   	app.use(function(error, req, res, next) {
   		res.status(500).render('500', { url: req.url });	
   	});
+	
 }
 

@@ -63,7 +63,14 @@ exports.searchGS = function (req,res) {
 
 		//Search by substring to get more results
 		var gsName  = req.body.gsName;
-		var subName = gsName.substring(0, Math.ceil( gsName.length/2 ));
+
+		// Initialize sub name
+		var subName = gsName;
+
+		// If string isn't too short, cut in half
+		if( gsName.length > 4 )
+			subName = gsName.substring(0, Math.ceil( gsName.length/2 ));
+		// else use the original gs name				
 
 		// pattern, attributes
 		var gs = new RegExp(subName, 'i');
@@ -81,7 +88,6 @@ exports.searchGS = function (req,res) {
 
 		if( req.body.category == 'All' )	
 			query.category = /./;
-		console.log(query);
 
     		collection.find(query).sort({datePosted: -1}).toArray(function (err, results) {
 

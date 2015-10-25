@@ -6,7 +6,7 @@
 
   <ul class="posts">
   	<li ng-repeat="post in recentPosts">
- 		<img src="{{post.imgUrl}}">
+ 		<img ng-if="post.imgUrl" ng-src="{{post.imgUrl}}">
   		<br>
   		<div class="post-blurb">Type: {{post.type}}</div>
  		 Name: {{post.name}} 
