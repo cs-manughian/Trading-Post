@@ -85,38 +85,12 @@ module.exports = function (app) {
 
 	// Handle 404
 	app.use(function(req, res, next){
-
-  		res.status(404);
-
-  		// respond with html page
-  		if (req.accepts('html')) 
-    			res.render('404', { url: req.url });
-
-  		// respond with json
-  		if (req.accepts('json')) 
-    			res.send({ error: 'Not found' });
-
-  		// default to plain-text. send()
-  		res.type('txt').send('Not found');
+  		res.status(404).render('404', { url: req.url });
 	});
 
   	// Handle 500
   	app.use(function(error, req, res, next) {
-
-  		res.status(500);
-
-  		// respond with html page
-  		if (req.accepts('html')) 
-    			res.render('500', { url: req.url });
-
-  		// respond with json
-  		if (req.accepts('json')) 
-    			res.send({ error: 'Internal Server Error' });
-
-  		// default to plain-text. send()
-  		res.type('txt').send('Internal Server Error');
-     		
+  		res.status(500).render('500', { url: req.url });	
   	});
-	
 }
 
