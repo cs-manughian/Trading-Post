@@ -13,11 +13,11 @@
 	 or service to your inventory. 
   </div>
 
-  <div ng-repeat="item in inventory">
+  <ul class="posts">
+     <li ng-repeat="item in inventory">
   	<img src="{{item.imgUrl}}">
   	<br>
-  	 Name: {{item.name}} {{item.type}}  
-  	<br>
+  	<div class="post-blurb">Name: {{item.name}} {{item.type}}</div> 
   	 Owner: {{item.owner}}
   	<br>
   	 Quantity: {{item.quantity}}
@@ -26,7 +26,8 @@
 	<br>
 	 Date Posted: {{item.datePosted}}
 	<br>
-  </div>
+     </li>
+  </ul>
 
 
 </div>
