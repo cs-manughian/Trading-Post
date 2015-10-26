@@ -15,6 +15,8 @@
 // Collections:
 // gs, messages, trades, users
 
+var ObjectID = require('mongodb').ObjectID;
+
 // Update a document's value field
 exports.updateDocument = function (req,res) {
 
@@ -25,8 +27,24 @@ exports.updateDocument = function (req,res) {
 		// just have the data
 		delete req.body.collName;
 
-		oldQuery = req.body.oldQuery;
-		newQuery = req.body.newQuery;
+		var oldQuery = req.body.oldQuery;
+		var newQuery = req.body.newQuery;
+
+
+		// Check if we are getting an id 
+		// and convert its value to a new 
+		// object ID in case we are getting a String
+		for( var key in oldQuery ){
+			if( key == '_id' )
+				oldQuery._id = new ObjectID( oldQuery._id );
+		}		
+
+		// Do the same for the new query
+		for( var key in newQuery ){
+			if( key == '_id' )
+				newQuery._id = new ObjectID( newQuery._id );
+		}	
+
 
     		collection.update(oldQuery, {$set: newQuery}, function (err, result) {
       				
@@ -76,14 +94,19 @@ exports.removeDocument = function (req,res) {
 		// just have the data
 		delete req.body.collName;
 
+		var query = req.body;
 
-		// Remove a users good/service based on the ID (or whatever).
+		// Check if we are getting an id 
+		// and convert its value to a new 
+		// object ID in case we are getting a String
+		for( var key in query ){
+			if( key == '_id' )
+				query._id = new ObjectID( query._id );
+		}
+
 		// Values can be an array of keys in case we want to
 		// remove multiple goods/services in one query.
-	
-		query = {};
-		query[req.body.key] = {'$in': req.body.values};
-		
+		//query[req.body.key] = {'$in': req.body.values};	
 		//{req.body._id: {'$in': req.body.values}}
 
     		collection.remove( query , function (err, result) {
@@ -118,8 +141,6 @@ exports.searchDocuments = function (req,res) {
 		// Take the collection name off so we can 
 		// just have the data
 		delete req.body.collName;
-
-		var query = {};
 
 		collection.find( req.body ).toArray(function (err, result) {
       				

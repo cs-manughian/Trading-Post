@@ -5,6 +5,8 @@
 *
 */
 
+var ObjectID = require('mongodb').ObjectID;
+
 // Request to trade 
 exports.requestTrade = function (req,res) {
 
@@ -20,10 +22,10 @@ exports.requestTrade = function (req,res) {
 		var trade = {
 				requestingUser: req.session.user.username,
 				owner: req.body.clickedGS.owner,
-				reqItemID: req.body.clickedGS._id,
-				offeredItemID: req.body.offeredGS._id,
+				reqItemID: new ObjectID( req.body.clickedGS._id ),
+				offeredItemID: new ObjectID( req.body.offeredGS._id ),
 				status: "pending",
-				dataRequested: currDateAndTime,
+				dateRequested: currDateAndTime,
 				dateResponded: ""
 			    };
 	
@@ -36,3 +38,5 @@ exports.requestTrade = function (req,res) {
 				}				
     		});	
 }
+
+
