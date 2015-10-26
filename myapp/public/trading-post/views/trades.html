@@ -7,13 +7,12 @@
 		Trades
 	</h3>
   <br>
-  <hr>
+  
   <h4>Incoming Trades</h4>
   Requests from other users
   <hr>
   <div ng-show="!isIncomingTradeFound">
-  		You don't have any incoming trades! To start trading, search for goods or services
-		and request to trade.
+  		You don't have any incoming trades!
   </div>
 
   <ul class="posts">
@@ -27,13 +26,14 @@
   	<br><br>
        <button ng-show="item.status == 'pending'" ng-click="respondToTrade(item, 'accept');" class="btn btn-default">Accept Trade</button>
        <button ng-show="item.status == 'pending'" ng-click="respondToTrade(item, 'reject');" class="btn btn-default">Reject Trade</button>
-  	<button ng-show="item.status != 'pending'" ng-click="confirmTrade(item);" class="btn btn-default">Confirm Trade</button>   
+  	<button ng-show="item.status == 'accepted'" ng-click="cancelTrade(item, 'confirm');" class="btn btn-default">Confirm Trade</button>
+	<button ng-show="item.status == 'rejected'" ng-click="cancelTrade(item, 'remove');" class="btn btn-default">Remove Trade</button>   
      </li>
   </ul>
 
   <br>
   <br>
-  <hr>
+  
   <h4>Outgoing Trades</h4>
 	Your requests to other users
   <hr>
@@ -52,7 +52,7 @@
 	<span ng-show="item.dateResponded!=''">Date Responded: {{item.dateResponded}}
 	</span>
 	<br>
-	<button ng-click="cancelTrade(item);" class="btn btn-default">Cancel Trade</button>
+	<button ng-click="cancelTrade(item, 'cancel');" class="btn btn-default">Cancel Trade</button>
      </li>
   </ul>
 

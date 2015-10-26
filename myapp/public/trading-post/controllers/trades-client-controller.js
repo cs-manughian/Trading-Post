@@ -65,16 +65,9 @@ angular.module('trading-post').controller('tradesController', function($scope, $
 		}
 	};
 
-	$scope.cancelTrade = function(item){ 
-		if( confirm("Are you sure you want to cancel this trade?") ){
-			TradesService.cancelTrade(item); 
-			$window.location.reload();
-		}
-	};
-
-	$scope.confirmTrade = function(item){ 
-		if( confirm("Are you sure you want to confirm this trade?") ){
-			TradesService.cancelTrade(item);	// Will remove the trade as well 
+	$scope.cancelTrade = function(item, type){ 
+		if( confirm("Are you sure you want to "+type+" this trade?") ){
+			TradesService.cancelTrade(item); //Will remove trade
 			$window.location.reload();
 		}
 	};
