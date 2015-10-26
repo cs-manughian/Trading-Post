@@ -70,6 +70,13 @@ form {
   padding-bottom: 175px; /*by footer height*/
 }
 
+.titleBar {
+  background-color: #F3F1ED;
+  height: 90px;
+  padding: 10px 0px 10px 20px;
+  border-radius: 5px;
+  border-top: 3px solid #b2a58e;
+}
 
 .my-breadcrumb {
   color: #A4A4A4;
