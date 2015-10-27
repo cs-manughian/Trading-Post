@@ -30,9 +30,7 @@ angular.module('trading-post').controller('inventoryController', function($scope
 		   success(function(responseData) {
 			$scope.inventory = responseData;
 
-			$scope.isInventoryFound = !(  responseData == null 
-					  	   || responseData == undefined 
-					  	   || responseData == "");		
+			$scope.isInventoryFound = !(  responseData == null || responseData == undefined || responseData == "");		
     		   }).
 		   error(function(responseData) {
     	   		 console.log('Inventory POST error. Received: ', responseData);
@@ -44,7 +42,7 @@ angular.module('trading-post').controller('inventoryController', function($scope
 		q.collName = "gs";
 		AllService.insert( q ).
 		   success(function(responseData) {
-			console.log('Successful GS insert'); 
+			console.log('Successful GS insert from inventory'); 
     		   }).
 		   error(function(responseData) {
     	   		 console.log('Inventory POST error. Received: ', responseData);
@@ -52,16 +50,24 @@ angular.module('trading-post').controller('inventoryController', function($scope
 	};
 
 
-	$scope.removeFromInventory = function( q ) {
+	$scope.removeFromInventory = function( item ) {
+
+	    if( confirm("Are you sure you want remove this item?") ) {
+
 		// Tell it to use the gs collection
-		q.collName = "gs";
-		AllService.remove( q ).
+		var query = {};
+		query.collName = "gs";
+		query._id = item._id;
+
+		AllService.remove( query ).
 		   success(function(responseData) {
-			console.log('Successful GS remove'); 
+			console.log('Successful GS remove from inventory'); 
+			$window.location.reload();
     		   }).
 		   error(function(responseData) {
     	   		 console.log('Inventory POST error. Received: ', responseData);
     	  	 });
+	    }
 	};
 
 	// "Main"

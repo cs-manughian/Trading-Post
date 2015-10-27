@@ -1,16 +1,21 @@
 <div ng-controller="resultsController">
   <br>
-  <h3>Search Results</h3>
+  <h3 class="title">Search Results</h3>
   <br>
 
-  <h4 ng-show="!isFound">
+  <h4 ng-if="searchResults" ng-show="!isFound">
 	Sorry! No results found...Search something else. :]
+  </h4>
+
+  <h4 ng-if="searchResults" ng-show="isFound">
+	<i>Showing {{searchResults.length}} results</i>
+	<hr>
   </h4>
 
   <div ng-controller="modalController" class="container">
 
   <ul class="posts">
-  	<li ng-repeat="result in searchResults track by $index">
+  	<li class="gs" ng-repeat="result in searchResults track by $index">
   		<img ng-if="result.imgUrl" ng-src="{{result.imgUrl}}">
   		<br>
   		<div class="post-blurb">Type: {{result.type}}</div>

@@ -1,7 +1,7 @@
 <div ng-controller="tradesController">
 
   <br>
-	<h3>
+	<h3 class="title">
 		<a href="#/profile">Profile</a>
 		<span class="my-breadcrumb"> / </span>
 		Trades
@@ -9,7 +9,7 @@
   <br>
   
   <div class="titleBar">
-  	<h4>Incoming Trades</h4>
+  	<h4><b>Incoming Trades</b></h4>
   	Requests from other users
   	<hr>
   </div>
@@ -19,18 +19,17 @@
   </div>
 
   <ul class="posts">
-     <li ng-repeat="item in incomingTrades">
+     <li class="gs trade" ng-repeat="item in incomingTrades">
     	<br>
-	Requesting user: {{item.requestingUser}}
+	<div class="tradeProp">Trade request from {{item.requestingUser}}</div>
+    	<b>Date Requested:</b> {{item.dateRequested}}
 	<br>
-    	Status: {{item.status}}
-    	<br>
-    	Date Requested: {{item.dateRequested}}
+	<b>Status:</b> {{item.status}}
   	<br><br>
        <button ng-show="item.status == 'pending'" ng-click="respondToTrade(item, 'accept');" class="btn btn-default">Accept Trade</button>
        <button ng-show="item.status == 'pending'" ng-click="respondToTrade(item, 'reject');" class="btn btn-default">Reject Trade</button>
   	<button ng-show="item.status == 'accepted'" ng-click="cancelTrade(item, 'confirm');" class="btn btn-default">Confirm Trade</button>
-	<button ng-show="item.status == 'rejected'" ng-click="cancelTrade(item, 'remove');" class="btn btn-default">Remove Trade</button>   
+	<button ng-show="item.status == 'rejected'" ng-click="cancelTrade(item, 'remove');" class="btn btn-default glyphicon glyphicon-trash"></button>   
      </li>
   </ul>
 
@@ -38,7 +37,7 @@
   <br>
   
   <div class="titleBar">
-  	<h4>Outgoing Trades</h4>
+  	<h4><b>Outgoing Trades</b></h4>
 		Your requests to other users
   	<hr>
   </div>
@@ -47,14 +46,13 @@
   		You don't have any outgoing trades! 
   </div>
   <ul class="posts">
-     <li ng-repeat="item in outgoingTrades">
+     <li class="gs trade" ng-repeat="item in outgoingTrades">
     	<br>
-    	Owner: {{item.owner}}
-    	<br>
-	Status: {{item.status}}
+    	<div class="tradeProp">Trade request to {{item.owner}}</div>
+    	<b>Date Requested:</b> {{item.dateRequested}}
 	<br>
-    	Date Requested: {{item.dateRequested}}
-  	<br>
+	<b>Status:</b> {{item.status}}	
+  	<br><br>
 	<span ng-show="item.dateResponded!=''">Date Responded: {{item.dateResponded}}
 	</span>
 	<br>

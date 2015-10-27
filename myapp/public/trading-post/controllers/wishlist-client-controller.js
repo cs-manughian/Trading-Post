@@ -32,17 +32,35 @@ angular.module('trading-post').controller('wishlistController', function($scope,
 	};
 
 	$scope.editWishlist = function( q ) {
-		// Tell it to use the gs collection
 		q.collName = "users";
 		AllService.update( q ).
 		   success(function(responseData) {
-			console.log('Successful GS insert'); 
+			console.log('Successful GS update from wishlist!'); 
     		   }).
 		   error(function(responseData) {
     	   		 console.log('Wishlist POST error. Received: ', responseData);
     	  	 });
 	};
 
+	$scope.removeItem = function( item ) {
+
+	    if( confirm("Are you sure you want remove this item?") ) {
+
+		var query = {};
+		query._id = $scope.user._id;	// Pass the user's ID to the server
+		query.name = item.name;		// Pass wishlist item name to server
+
+		$http.post('/updateWishList', query).
+		   success(function(responseData) {
+			console.log('Successful GS remove from wishlist!'); 
+    		   	$window.location.reload();
+		 }).
+		   error(function(responseData) {
+    	   		 console.log('Wishlist POST error. Received: ', responseData);
+    	  	 });
+			
+	    }
+	};	
 
 	// "Main"
 

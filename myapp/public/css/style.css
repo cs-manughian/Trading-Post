@@ -78,10 +78,41 @@ form {
   border-top: 3px solid #b2a58e;
 }
 
+.title {
+  font-weight: bold;
+}
+
 .my-breadcrumb {
   color: #A4A4A4;
   font-size: 24px;
   padding: 0 5px;
+}
+
+.gs {
+  width: 323px;
+  border: 1px solid #dedede;
+  padding: 10px;
+  margin: 20px;
+  text-align: center;
+  display: inline;
+  -webkit-box-shadow: 0px 0px 16px 0px rgba(50, 50, 50, 0.20);
+  -moz-box-shadow:    0px 0px 16px 0px rgba(50, 50, 50, 0.20);
+  box-shadow:         0px 0px 16px 0px rgba(50, 50, 50, 0.20);
+}
+
+.gs:hover {
+  border: 1px solid #A4CF43;
+}
+
+.trade {
+  text-align: left;
+}
+
+.tradeProp {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 footer {
@@ -115,7 +146,7 @@ footer {
 .posts {
     overflow: hidden;
     padding: 0;
-    width: 1010px;
+    width: 1200px;
 }
 
 .ng-binding.ng-scope {
@@ -144,6 +175,9 @@ footer {
 
 .post-blurb {
   padding-top: 10px;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 16px;
 }
 
 .about {

@@ -1,7 +1,7 @@
 <div ng-controller="inventoryController">
 
   <br>
-	<h3>
+	<h3 class="title">
 		<a href="#/profile">Profile</a>
 		<span class="my-breadcrumb"> / </span>
 		Inventory
@@ -14,18 +14,17 @@
   </div>
 
   <ul class="posts">
-     <li ng-repeat="item in inventory">
+     <li class="gs" ng-repeat="item in inventory">
   	<img ng-if="item.imgUrl" ng-src="{{item.imgUrl}}">
   	<br>
-  	<div class="post-blurb">Name: {{item.name}} {{item.type}}</div> 
-  	 Owner: {{item.owner}}
-  	<br>
-  	 Quantity: {{item.quantity}}
-  	<br>
-	 Category: {{item.category}}
+  	<div class="post-blurb">{{item.name}} ({{item.type}})</b></div> 
+  	 <b>Category:</b> {{item.category}}
 	<br>
-	 Date Posted: {{item.datePosted}}
+  	 <b>Quantity:</b> {{item.quantity}}
 	<br>
+	 <b>Date Posted:</b> {{item.datePosted}}
+	<br>
+	<button ng-click="removeFromInventory(item);" class="btn btn-default glyphicon glyphicon-trash"></button>
      </li>
   </ul>
 

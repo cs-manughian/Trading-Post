@@ -1,7 +1,7 @@
 <div ng-controller="wishlistController">
 
   <br>
-	<h3>
+	<h3 class="title">
 		<a href="#/profile">Profile</a>
 		<span class="my-breadcrumb"> / </span>
 		Wishlist
@@ -13,18 +13,18 @@
 	 or service to your wishlist. 
   </div>
 
-  <div ng-repeat="item in wishList">
+  <ul class="posts">
+     <li class="gs" ng-repeat="item in wishList">
   	<img ng-if="item.imgUrl" ng-src="{{item.imgUrl}}">
   	<br>
-  	 Name: {{item.name}} 
+  	 <div class="post-blurb">{{item.name}} ({{item.type}})</div> 
+  	 <b>Quantity:</b> {{item.qty}}
   	<br>
-  	 Type: {{item.type}}
-  	<br>
-  	 Quantity: {{item.qty}}
-  	<br>
-	 Importance: {{item.importance}}
+	 <b>Importance:</b> {{item.importance}}
 	<br>
-  </div>
+	<button ng-click="removeItem(item);" class="btn btn-default glyphicon glyphicon-trash"></button>
+      </li>
+  </ul>
 
 
 </div>

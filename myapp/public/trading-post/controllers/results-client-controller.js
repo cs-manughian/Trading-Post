@@ -15,9 +15,7 @@ angular.module('trading-post').controller('resultsController', function($scope, 
 		  success(function(responseData) {
 
 			$scope.searchResults = responseData;
-			$scope.isFound = !(  responseData == null 
-					  || responseData == undefined 
-					  || responseData == "");
+			$scope.isFound = !(  responseData == null || responseData == undefined || responseData == "");
 
 		 }).
 		   error(function(responseData) {
@@ -29,9 +27,7 @@ angular.module('trading-post').controller('resultsController', function($scope, 
 		 GsService.getInventory().
 		   success(function(responseData) {
 			$scope.inventory = responseData;
-			$scope.isInvEmpty = (  responseData == null 
-					    || responseData == undefined 
-					    || responseData == "");		
+			$scope.isInvEmpty = (  responseData == null || responseData == undefined || responseData == "");		
     		   }).
 		   error(function(responseData) {
     	   		 console.log('Results POST error. Received: ', responseData);

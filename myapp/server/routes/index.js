@@ -79,6 +79,9 @@ module.exports = function (app) {
 				// For getting current user's inventory
 				app.post('/inventory', attachDB, goodsServices.findInventory);
 
+				// For updating wishlist
+				app.post('/updateWishList', attachDB, user.updateWishList);
+
 				// For any page 
 				app.post('/update', attachDB, anyPage.updateDocument);
 				app.post('/insert', attachDB, anyPage.insertDocument);
