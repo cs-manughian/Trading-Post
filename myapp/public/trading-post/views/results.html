@@ -8,7 +8,7 @@
   </h4>
 
   <h4 ng-if="searchResults" ng-show="isFound">
-	<i>Showing {{searchResults.length}} results</i>
+	<i>Showing {{searchResults.length}} result(s)</i>
 	<hr>
   </h4>
 
@@ -18,10 +18,8 @@
   	<li class="gs" ng-repeat="result in searchResults track by $index">
   		<img ng-if="result.imgUrl" ng-src="{{result.imgUrl}}">
   		<br>
-  		<div class="post-blurb">Type: {{result.type}}</div>
-  		Name: {{result.name}} 
-  		<br>
-   		Owner: {{result.owner}}
+  		<div class="post-blurb">{{result.name}}</div>
+  		A {{result.type}} by {{result.owner}}
   		<br>
    		Quantity: {{result.quantity}}
   		<br>
