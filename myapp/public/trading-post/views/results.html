@@ -16,7 +16,7 @@
 
   <ul class="posts">
   	<li class="gs" ng-repeat="result in searchResults track by $index">
-  		<img ng-if="result.imgUrl" ng-src="{{result.imgUrl}}">
+  		<a href="#/viewpost"><img ng-if="result.imgUrl" ng-src="{{result.imgUrl}}"></a>
   		<br>
   		<div class="post-blurb">{{result.name}}</div>
   		A {{result.type}} by {{result.owner}}

@@ -5,10 +5,10 @@
 
   <ul class="posts">
   	<li class="gs" ng-repeat="post in recentPosts">
- 		<img ng-if="post.imgUrl" ng-src="{{post.imgUrl}}">
+ 		<a href="#/viewpost"><img ng-if="post.imgUrl" ng-src="{{post.imgUrl}}"></a>
   		<br>
   		<div class="post-blurb"><b>{{post.name}}</b></div>
- 		 A {{post.type}} Posted by {{post.owner}}
+ 		  {{post.type}} Posted by {{post.owner}}
   		<br>
   		 <b>Quantity:</b> {{post.quantity}}
  		<br>

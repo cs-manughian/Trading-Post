@@ -17,7 +17,7 @@ angular.module('trading-post').controller('recentController', function($scope, $
 		   error(function(responseData) {
     	   		console.log('Recent posts POST error. Received: ', responseData);
     	  	 });
-	}
+	};	
 
 	$scope.getPosts();
 

@@ -40,6 +40,10 @@ angular.module('trading-post').config(['$routeProvider', '$locationProvider',
        
             })
 
+            //route for single item page
+            .when('/viewpost', {
+                templateUrl : 'trading-post/views/viewpost.html'
+            })
 
             .otherwise({
             redirectTo: '/'

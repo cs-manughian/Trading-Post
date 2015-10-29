@@ -66,7 +66,8 @@ form {
 
 
 .page-content {
-  margin: 0px 200px 175px 200px;
+  width: 1100px;
+  float: left;
   padding-bottom: 175px; /*by footer height*/
 }
 
@@ -92,7 +93,7 @@ form {
   width: 323px;
   border: 1px solid #dedede;
   padding: 10px;
-  margin: 20px;
+  margin: 20px 20px 20px 0;
   text-align: center;
   display: inline;
   -webkit-box-shadow: 0px 0px 16px 0px rgba(50, 50, 50, 0.20);
@@ -146,7 +147,6 @@ footer {
 .posts {
     overflow: hidden;
     padding: 0;
-    width: 1200px;
 }
 
 .ng-binding.ng-scope {
@@ -225,3 +225,46 @@ h3 {
     margin: 0 auto;
 }
 
+.page-column {
+    width: 300px;
+    overflow: hidden;
+    margin-top: 40px;
+    padding-left: 40px;
+}
+
+main {
+    overflow: hidden;
+    margin: 0 auto;
+    width: 1500px;
+}
+
+.column-quantity {
+  margin-top: 40px;
+}
+
+.page-column h4 {
+    color: #ADD250;
+}
+
+.post-image {
+    float: left;
+    margin-right: 20px;
+}
+
+.post-description {
+  padding-top: 20px;
+}
+
+.post-menu li, .post-description li {
+  list-style: none;
+}
+
+.post-image {
+    float: left;
+    margin-right: 20px;
+    width: 300px;
+}
+
+.post-image img {
+    margin-bottom: 10px;
+}
