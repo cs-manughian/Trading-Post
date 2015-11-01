@@ -115,7 +115,7 @@ exports.removeDocument = function (req,res) {
         				console.log(err);      		
 						
       				} else {
-        				console.log('Removed data!');
+        				console.log('Removed data! ');
       					res.end();
 				}				
     		});
@@ -142,7 +142,16 @@ exports.searchDocuments = function (req,res) {
 		// just have the data
 		delete req.body.collName;
 
-		collection.find( req.body ).toArray(function (err, result) {
+		var query = req.body;
+
+		// Check if we are getting an id 
+		// and convert its value to a new 
+		// object ID in case we are getting a String
+		for( var key in query ){
+			if( key == '_id' )
+				query._id = new ObjectID( query._id );
+		}
+		collection.find( query ).toArray(function (err, result) {
       				
 				if (err) {
         				console.log(err);

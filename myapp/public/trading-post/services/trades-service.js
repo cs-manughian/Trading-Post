@@ -59,6 +59,22 @@ angular.module('trading-post').factory('TradesService',function($http) {
 
 	};
 
+	TradesServiceOp.getTradedItem = function( ID ) {
+
+		var query = {};
+
+		// Specify the GS collection
+		query.collName = "gs";
+
+		// Given the requested/offered item ID
+		// get the GS info for the item
+		query._id = ID;
+
+		// Use post for secure queries
+		return $http.post('/search', query );
+
+	};
+
 
 	return TradesServiceOp;
 	       

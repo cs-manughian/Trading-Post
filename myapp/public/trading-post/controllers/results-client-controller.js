@@ -1,5 +1,5 @@
 // Create a controller and add to trading-post module
-angular.module('trading-post').controller('resultsController', function($scope, $http, GsService, TradesService){
+angular.module('trading-post').controller('resultsController', function($scope, $http, $window, GsService, TradesService){
 	
 	$scope.name ='results';
 
@@ -58,6 +58,13 @@ angular.module('trading-post').controller('resultsController', function($scope, 
 		$scope.tradeItems.offeredGS = item;
 	};
 
+	// Set the clicked post so we can pass
+	// the post's data to the more detailed view
+	// of the post ("view post" view)
+	$scope.setPostAndRedirect = function(post){
+		GsService.setCurrentPost(post);
+		$window.location.href = "#/viewpost";
+	}
 
 
 	// "Main"

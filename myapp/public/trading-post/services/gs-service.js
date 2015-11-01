@@ -11,6 +11,15 @@ angular.module('trading-post').factory('GsService',function($http, $location) {
 
 	
 	var GoodsServicesOp = {};
+	var currentPost = {};
+
+	GoodsServicesOp.getCurrentPost = function( ) {
+		return currentPost;
+	};
+
+	GoodsServicesOp.setCurrentPost = function( post ) {
+		currentPost = post;
+	};
 
 	GoodsServicesOp.getRecentPosts = function( ) {
 

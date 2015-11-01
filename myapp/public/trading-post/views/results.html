@@ -16,10 +16,10 @@
 
   <ul class="posts">
   	<li class="gs" ng-repeat="result in searchResults track by $index">
-  		<a href="#/viewpost"><img ng-if="result.imgUrl" ng-src="{{result.imgUrl}}"></a>
+  		<img ng-if="result.imgUrl" ng-src="{{result.imgUrl}}" ng-click="setPostAndRedirect(result);">
   		<br>
   		<div class="post-blurb">{{result.name}}</div>
-  		A {{result.type}} by {{result.owner}}
+  		 {{result.type}} by {{result.owner}}
   		<br>
    		Quantity: {{result.quantity}}
   		<br>

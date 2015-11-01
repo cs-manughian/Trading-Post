@@ -1,30 +1,35 @@
 <br>
-<div>
+<div ng-controller="viewpostController">
 
-  <div class="post-image"><img src="img/dog_walking.png"><img src="img/dog_walking.png"><img src="img/dog_walking.png"></div>
+  <div class="post-image">
+	<img class="posts" ng-src="{{currPost.imgUrl}}">
+	<img class="posts" ng-src="{{currPost.imgUrl}}">
+	<img class="posts" ng-src="{{currPost.imgUrl}}">
+  </div>
   
   <div>
   <ul class="post-menu">
-    <li><h3>Item Name</h3><li>
-    <li><h4 class="post-owner"><a href="#/profile">Username (Feedback)</a></h4></li>
-    <li><h5 class="post-location">Long Beach, CA, 90810</h5></li>
+    <li><h3><b>{{currPost.name}}</b></h3><li>
+    <li><h4 class="post-owner"><a href="#/profile">{{currPost.owner}} (Feedback)</a></h4></li>
+    <li><h5 class="post-location">{{currPost.zipcode}}</h5></li>
     <li><a href="#">Request a trade</a></li>
     <li><a href="#">Add to wishlist</a></li>
   </ul>
 
 
   <div class="post-description">
-  	<h4>Description: </h4>
+  	<h4><b>Description: </b></h4>
   	<ul>
-  		<li>Type: Service</li>
-  		<li>Quantity: 2</li>
-  		<li>Category: Beauty</li>
+  		<li>Type: {{currPost.type}}</li>
+  		<li>Quantity: {{currPost.quantity}}</li>
+  		<li>Category: {{currPost.category}}</li>
   	</ul>
+	<br>
   	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel tellus non purus suscipit dapibus. Mauris purus ex, condimentum in sagittis non, malesuada in velit. Mauris eget egestas erat. Nam quam neque, dignissim nec efficitur a, sagittis at dui. Donec sollicitudin mattis suscipit. Donec dignissim lobortis nisi, vitae dapibus lorem dictum non. Etiam pulvinar dui blandit, venenatis sem non, elementum mi. Vivamus in pretium purus, at lobortis ante. Donec in nunc non erat auctor commodo. Curabitur vitae orci fermentum, viverra felis ac, fermentum ante. In auctor risus a libero volutpat rhoncus. Cras condimentum id metus quis suscipit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce tristique lacinia libero in auctor. Mauris tincidunt euismod lectus.
   	<br>
   	<br>
   	<br>
-  	Date posted: 5/29/2015
+  	Date posted: {{currPost.datePosted}}
   </div>
 </div>
 
