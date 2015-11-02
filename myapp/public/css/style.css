@@ -117,6 +117,10 @@ form {
   border: 1px solid #A4CF43;
 }
 
+.inventoryForm {
+  margin-top: 5px;
+}
+
 .trade {
   text-align: left;
 }
@@ -169,7 +173,7 @@ footer {
 /**Recent Post**/
 .posts {
     overflow: hidden;
-    padding: 0;
+    padding: 10px;
 }
 
 .ng-binding.ng-scope {
@@ -217,8 +221,10 @@ h3 {
 }
 
 .profile-img {
-    float: left;
-    padding: 10px 20px 20px 0px;
+  float: left;
+  padding: 5px;
+  border: 1px solid rgb(221, 221, 221);
+  margin: 15px;
 }
 
 .profile-menu li {
@@ -237,8 +243,10 @@ h3 {
 }
 
 .profile-trades {
-    clear: both;
-    padding-top: 50px;
+  clear: both;
+  padding-top: 50px;
+  width: 800px;
+  margin-left: 0px;
 }
 
 

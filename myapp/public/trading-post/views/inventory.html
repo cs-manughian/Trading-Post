@@ -7,8 +7,61 @@
 		Inventory
 	</h3>
   <br>
-  <button ng-click="" class="btn btn-default">Add an Item (not yet functional)</button>
-   
+ <div ng-controller="modalController" class="container">
+
+  <button ng-click="toggleModal();" class="btn btn-default">Add an Item</button>
+
+  
+   <modal title="Add an Item" visible="showModal">
+	<form class="form-horizontal" name="inventoryForm" role="form"  method="post"><!--action=""-->
+	  <div class="form-group">
+	    <label class="col-sm-2 control-label">Name:</label>
+	    <div class="col-sm-10 inventoryForm">
+	       <input type="text" name="name" placeholder="Name" maxLength="16" required>
+		</div>
+	  </div> 
+	  <div class="form-group">
+	    <label class="col-sm-2 control-label">Type:</label>
+	    <div class="col-sm-10 inventoryForm">
+   		 <select name="type">
+      			<option>Good</option>
+     		 	<option>Service</option>
+  		 </select>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label class="col-sm-2 control-label">Quantity:</label>
+	    <div class="col-sm-10 inventoryForm">
+	    <input type="number" min="0" max="100" name="quantity" placeholder="Quantity" required>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label class="col-sm-2 control-label" style="padding-right:5px;">Category:</label>
+	    <div class="col-sm-10 inventoryForm">
+	    	<select name="category">
+			<option>All</option>
+			<option>Beauty</option>
+			<option>Clothing</option>
+			<option>Electronics</option>
+			<option>Entertainment</option>
+			<option>Food</option>
+			<option>Furniture</option>
+			<option>Music</option>
+			<option>Jewelry</option>
+			<option>Kids</option>
+			<option>Outdoors</option>
+			<option>Pets</option>
+		 </select> 
+	    </div>
+	  </div>
+	  <hr>
+	  <br>
+	  <button class="btn btn-success" type="submit" ng-click="warn();">Add to Inventory</button>
+	</form>
+	<br>
+   </modal>  
+  
+ </div>
   <div ng-show="!isInventoryFound">	
 	<br>
 	You don't have anything in your inventory! Click "Add an Item" to add a good

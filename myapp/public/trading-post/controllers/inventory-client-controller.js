@@ -7,6 +7,10 @@ angular.module('trading-post').controller('inventoryController', function($scope
 	$scope.inventory = {};
 
 	// Functions
+	$scope.warn = function() {
+		$window.alert('Not yet functional');
+	}
+
 	$scope.getUser = function() {
 		UserService.getUserInfo().
 		   success(function(responseData) {
