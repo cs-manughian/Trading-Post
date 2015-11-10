@@ -81,9 +81,11 @@
 			<br>
 			{{item.status}}	
 		<br>
-	<span ng-show="item.dateResponded!=''">Date Responded: {{item.dateResponded}}
+	<span ng-show="item.dateResponded!=''">
+		<b style="padding-right:30px;">Date Responded:</b>
+		{{item.dateResponded}}
 	</span>
-	<br>
+	<br><br>
 	<button ng-click="cancelTrade(item, 'cancel');" class="btn btn-default">Cancel Trade</button>
      </li>
   </ul>

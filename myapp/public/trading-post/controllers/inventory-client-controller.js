@@ -5,12 +5,9 @@ angular.module('trading-post').controller('inventoryController', function($scope
 	$scope.name ='inventory';
 	$scope.isInventoryFound = false;
 	$scope.inventory = {};
+	$scope.item = {};
 
 	// Functions
-	$scope.warn = function() {
-		$window.alert('Not yet functional');
-	}
-
 	$scope.getUser = function() {
 		UserService.getUserInfo().
 		   success(function(responseData) {
@@ -41,9 +38,16 @@ angular.module('trading-post').controller('inventoryController', function($scope
     	  	 });
 	};
 
-	$scope.addToInventory = function( q ) {
-		// Tell it to use the gs collection
-		q.collName = "gs";
+	$scope.addToInventory = function( item ) {
+		// Fill out collection name and user info
+		// to include with item details
+		var q = item;
+		q.collName 	= "gs";
+		q.owner 	= $scope.user.username;
+		q.zipcode 	= $scope.user.zipcode;
+		q.datePosted	= new Date().toISOString().replace('T', ' ').substr(0, 19);
+		q.imgUrl	= "";
+
 		AllService.insert( q ).
 		   success(function(responseData) {
 			console.log('Successful GS insert from inventory'); 
@@ -51,6 +55,9 @@ angular.module('trading-post').controller('inventoryController', function($scope
 		   error(function(responseData) {
     	   		 console.log('Inventory POST error. Received: ', responseData);
     	  	 });
+
+		// Force page reload after add to update inventory display
+		$window.location.reload();
 	};
 
 

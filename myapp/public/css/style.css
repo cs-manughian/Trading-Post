@@ -207,13 +207,16 @@ footer {
   font-size: 16px;
 }
 
-.about {
-    width: 1000px;
+.aboutText {
+  width: 500px;
+  padding: 0px 0px 20px 20px;
+  overflow: hidden;
+  color: #464646;
 }
 
 .map {
-  text-align: center;
-  margin-top: 20px;
+  float: left;
+  width: 400px;
 }
 
 h3 {
