@@ -21,7 +21,6 @@
   		<div class="post-blurb">{{result.name}}</div>
   		 {{result.type}} by {{result.owner}}
   		<br>
-   		Quantity: {{result.quantity}}
   		<br>
 		<button ng-click="toggleModal(); saveClickedGS(result);" class="btn btn-default">Request to Trade</button>
 	</li>
@@ -46,6 +45,7 @@
       <br>
       <button type="submit" class="btn btn-default" ng-disabled="tradeForm.$pristine" 
 		ng-click="sendTradeRequest();" data-dismiss="modal">Submit Request</button>
+      <br>
       <br>
     </form>
   </modal>

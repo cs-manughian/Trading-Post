@@ -76,6 +76,17 @@ angular.module('trading-post').factory('TradesService',function($http) {
 	};
 
 
+	// This function is for getting incoming or
+	// outgoing trades (specified by type)
+	TradesServiceOp.getTrades = function( type ) {
+
+		var query = {};
+		query.type = type; 
+
+		// Use post for secure queries
+		return $http.post('/trades', query );
+	};
+
 	return TradesServiceOp;
 	       
 });

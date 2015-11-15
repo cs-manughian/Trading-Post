@@ -5,7 +5,8 @@
 
   <br>
   <br>
-  <div class="profile">
+  <div class="profile-section" style="margin-top: 0px">
+    <div class="profile">
      <div class="profile-img">
         <img src="img/bareProfile.png">
      </div>
@@ -13,24 +14,23 @@
      <h4>{{user.username}}</h4>
      <h5>{{user.email}}</h5>
      <h5>ZIP {{user.zipcode}}</h5>
-     <ul class="profile-menu">
-        <li><a href="#/profile/inventory" class="profileLink">Inventory</a></li>
-        <li><a href="#/profile/wishlist" class="profileLink">Wishlist</a></li>
-        <li><a href="#/profile/messages" class="profileLink">Messages</a></li>
-        <li><a href="#/profile/trades" class="profileLink">Trades</a></li>
-      </ul>
-  </div>
-
-  <div class="profile-feedback">
+     <button class="btn btn-default" style="padding: 0px 5px 0px 5px">Upload photo</button>
+    </div>
+    <div class="profile-feedback">
  	<h4>Feedback Score</h4>
  	{{feedbackScore}} / 5 Star Rating
  	<br>
 	Out of {{totalRatings}} ratings
+    </div>
+	<br>
+        <a style="margin: 20px 10px 0px 170px;" href="#/profile/inventory" class="profileLink">Inventory</a>
+        |<a href="#/profile/wishlist" class="profileLink">Wishlist</a>
+        |<a href="#/profile/messages" class="profileLink">Messages</a>
+        |<a href="#/profile/trades" class="profileLink">Trades</a>
   </div>
-
-
-  <div class="profile-trades">
-       <div>
+  <br>
+  <div class="profile-section" style="width: 300px; height: 250px;">
+   <div class="profile-trades">
            <h3>Recent Feedback</h3>
 	   <hr>
            <br>
@@ -38,7 +38,23 @@
 	   <br>
 	   <br>
 	   "I traded baby sitting for excellent fresh fruits! I recommend trading with this user."
-       </div>
+	   <br>
+    </div>
   </div>
-
+  <br>
+  <div class="profile-section" style="width: 460px; height: 250px;">
+     <div class="profile-trades">
+	<h3>Recent Activity</h3>
+	   <hr>
+          <br>
+	   	Traded with nina333
+	   <br>
+	   <br>
+		Added items to wishlist 
+	   <br>
+	   <br>
+		Browsing for dogs
+	   <br>
+     </div>
+  </div>
 </div>

@@ -30,7 +30,9 @@
 
 </head>
 
-<body>
+<body style="background-color: #F5F5F1;">
+  <div class="my-container">
+
       <div class="header">
 
         <div class="header-content">
@@ -90,9 +92,11 @@
     </div>
  
       </div>
-
+      <div class="page-content" ng-view></div>   
+     
+     <!-- Comment out filler for now
       <main>
-      <div class="page-content" ng-view></div>             
+               
     <div class="page-column">
         <div class="column-random">
         <h4>Random Posts</h4>
@@ -127,7 +131,7 @@
       </div>
       </div>
   </main>
-       
+       -->
       <footer class="panel-footer">
       	<div class="footer-wrapper">
             <div class="footerSection">
@@ -152,6 +156,6 @@
     
 
 
-
+  </div> <!--end container-->
 </body>
 </html>

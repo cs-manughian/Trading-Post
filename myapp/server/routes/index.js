@@ -76,6 +76,9 @@ module.exports = function (app) {
 				// For requesting to trade
 				app.post('/reqTrade', attachDB, trades.requestTrade);
 
+				// For getting incoming or outgoing trades
+				app.post('/trades', attachDB, trades.getTrades);
+
 				// For getting current user's inventory
 				app.post('/inventory', attachDB, goodsServices.findInventory);
 

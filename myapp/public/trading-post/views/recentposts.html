@@ -7,10 +7,8 @@
   	<li class="gs" ng-repeat="post in recentPosts">
  		<img ng-if="post.imgUrl" ng-src="{{post.imgUrl}}" ng-click="setPostAndRedirect(post);">
   		<br>
-  		<div class="post-blurb"><b>{{post.name}}</b></div>
- 		 {{post.type}} Posted by {{post.owner}}
-  		<br>
-  		 <b>Quantity:</b> {{post.quantity}}
+  		<div class="post-blurb">{{post.name}}</div>
+ 		 {{post.type}} by {{post.owner}}
  		<br>
 	</li>
   </ul>

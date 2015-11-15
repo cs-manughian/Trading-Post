@@ -1,14 +1,16 @@
-html {
+@import url('http://fonts.googleapis.com/css?family=Oswald');
+
+html, body {
   min-height: 100%;
   min-width: 100%;
-  margin: 0px;
 }
 
-body {
-  min-height: 100%;
-  min-width: 100%;
-  padding: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.my-container {
+  background-color: #F5F5F1;
+  padding: 0;  
+  margin: 0px;
+  font: 14px Calibri, sans-serif;
+  /*"Lucida Grande", Helvetica, Arial, sans-serif;*/
 }
 
 a {
@@ -65,15 +67,10 @@ form {
   margin-right: 150px;
 }
 
-.profileLink {
-  margin: 0px 20px 20px 0px; 
-  color: #337AB7;
-}
-
-
 .page-content {
-  margin-left: 100px;
+  margin-left: 200px; /* Set to 100px for filler */
   width: 1100px;
+  overflow: hidden;
   padding-bottom: 175px; /*by footer height*/
   float:left;
 }
@@ -84,15 +81,18 @@ form {
 }
 
 .titleBar {
-  background-color: #F3F1ED;
+  background-color: #FFF;
   height: 90px;
+  width: 950px;
   padding: 10px 0px 10px 20px;
-  border-radius: 5px;
+  border-radius: 3px;
   border-top: 3px solid #b2a58e;
+  border-bottom: 1px solid #c7bead;
 }
 
 .title {
-  font-weight: bold;
+  font-size: 28px;
+  font-family: Oswald;
 }
 
 .my-breadcrumb {
@@ -102,19 +102,27 @@ form {
 }
 
 .gs {
-  width: 323px;
-  border: 1px solid #dedede;
-  padding: 10px;
-  margin: 20px 20px 20px 0;
+  width: 320px;
+  padding-bottom: 10px;
+  margin: 20px 20px 10px 0px;
   text-align: center;
   display: inline;
-  -webkit-box-shadow: 0px 0px 16px 0px rgba(50, 50, 50, 0.20);
-  -moz-box-shadow:    0px 0px 16px 0px rgba(50, 50, 50, 0.20);
-  box-shadow:         0px 0px 16px 0px rgba(50, 50, 50, 0.20);
+  border-radius: 3px;
+  background-color: #FFF;
+  border: 1px solid #E1E3DF;
+  border-bottom-color: #CBCCC9;
+
 }
 
 .gs:hover {
   border: 1px solid #A4CF43;
+  /*
+  border-color: #ddd;
+  border-bottom-color: #bbb;
+  */
+  -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 }
 
 .inventoryForm {
@@ -123,6 +131,7 @@ form {
 
 .trade {
   text-align: left;
+  padding-left: 10px;
 }
 
 .notrade {
@@ -137,7 +146,6 @@ form {
 
 .tradeProp {
   font-weight: bold;
-  font-style: italic;
   font-size: 16px;
   margin-bottom: 10px;
 }
@@ -178,9 +186,9 @@ footer {
 
 .ng-binding.ng-scope {
     float: left;
-    padding-right: 30px;
     list-style: none;
     margin-bottom: 20px;
+    background-color: #FFF;
 }
 
 
@@ -196,15 +204,13 @@ footer {
 }
 
 .posts img {
-    width: 300px;
-    height: 200px;
+    width: 317.5px;
+    height: 240px;
 }
 
 .post-blurb {
   padding-top: 10px;
-  font-weight: bold;
-  font-style: italic;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .aboutText {
@@ -227,28 +233,49 @@ h3 {
   float: left;
   padding: 5px;
   border: 1px solid rgb(221, 221, 221);
-  margin: 15px;
+  margin: 5px 15px 15px 15px;
+  -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+
 }
 
-.profile-menu li {
-    list-style: none;
+.profile-section {
+  float: left;
+  display: inline;
+  margin: 20px 40px 0px 0px;
+  padding-top: 10px;
+  width: 800px;
+  height: 188px;
+  border: 1px solid #d3d3d3;
+  background-color: #FFF;
 }
 
 .profile {
-    width: 400px;
-    border-right: 1px solid #ddd;
-    float: left;
+  width: 399px;
+  height: 120px;
+  float: left;
+}
+
+.smallBtn {
+  padding: 0px 5px 0px 5px;
+}
+
+.profileLink {
+  margin: 0px 10px 0px 10px; 
+  color: #337AB7;
+  font-weight: bold;
 }
 
 .profile-feedback {
-    overflow: hidden;
-    padding-left: 20px;
+  width: 350px;
+  height: 120px;
+  overflow: hidden;
+  padding-left: 20px;
 }
 
 .profile-trades {
-  clear: both;
-  padding-top: 50px;
-  width: 800px;
+  padding: 0px 20px 20px 20px;
   margin-left: 0px;
 }
 
@@ -280,11 +307,6 @@ main {
     color: #ADD250;
 }
 
-.post-image {
-    float: left;
-    margin-right: 20px;
-}
-
 .post-description {
   padding-top: 20px;
 }
@@ -304,3 +326,4 @@ main {
     height: 200px;
     width: 300px;
 }
+
