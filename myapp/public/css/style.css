@@ -197,6 +197,7 @@ footer {
   clear: both;
   position: absolute;
   bottom: 15px;
+  width: 860px;
 }
 
 .input-group-addon {

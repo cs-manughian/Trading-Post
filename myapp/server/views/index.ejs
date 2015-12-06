@@ -79,11 +79,26 @@
           <a href="#/recent" class="barLink">Recent Posts</a>
 
 	   <% if( locals.username ) { %>
-             		<a href="#/profile" class="barLink">Your Profile</a>
-		<span id="logoutLink">
-	      		<%=usergreeting %>
-	      		<a href="logout" class="barLink"><b>Log out</b></a>
-		</span>
+
+	     <ul class="nav navbar-nav" style="background:whitesmoke; float:right;">
+        	<li class="dropdown">
+          	  <a style="padding: 7px; width: 150px; color:#262626;" class="dropdown-toggle" data-toggle="dropdown"><%=usergreeting %>'s Account <span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a>
+          	  <ul class="dropdown-menu">
+            		<li><a href="#/profile">Profile <span class="glyphicon glyphicon-user pull-right"></span></a></li>
+            		<li class="divider"></li>
+            		<li><a href="#/profile/inventory">Inventory <span class="glyphicon glyphicon-list-alt pull-right"></span></a></li>
+             		<li class="divider"></li>
+             		<li><a href="#/profile/wishlist">Wishlist <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
+             		<li class="divider"></li>
+             		<li><a href="#/profile/messages">Messages <span class="glyphicon glyphicon-envelope pull-right"></span></a></li>
+             		<li class="divider"></li>
+             		<li><a href="#/profile/trades">Trades <span class="glyphicon glyphicon-refresh pull-right"></span></a></li>
+             		<li class="divider"></li>
+             		<li><a href="logout">Log Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+                  </ul>
+        	 </li>
+      	     </ul>
+
 	   <% } else { %>
 	      <a href="/signup" class="barLink signUpLink"><b>Sign Up</b></a>
 	      <a href="/login" class="barLink">Log in</a>
