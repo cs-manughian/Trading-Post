@@ -44,3 +44,48 @@ exports.updateWishList = function(req, res){
     	});
 
 }
+
+exports.insertWishList = function(req, res){
+
+    	var collection = req.db.collection("users");
+
+	var item = req.body.item;
+
+	// User not logged in
+	if( !req.session.user ) {
+		// Notify user to log in to
+		// insert in wishlist
+		res.send('0');
+
+	} else {
+
+	     // User is logged in
+	     // So insert in wishlist.
+
+	     // We got the item obj to insert.
+	     // Take the item name, quantity, and type
+	     // and added importance.
+
+    	     collection.update( {username: req.session.user.username}, 
+			      {$push: { "wishList": 
+					{ 
+						name: item.name,
+						type: item.type,
+						qty: item.quantity,
+						importance: item.importance
+					}
+				      } 
+			      },
+	   	 function (err, result) {
+    			
+	   		if (err) {
+    	   			console.log("Insert wishlist error: ",err);      		
+					
+    			} else {
+    				console.log('Inserted in wishlist!');
+    				res.end();
+			}				
+    	     });
+	}
+}
+

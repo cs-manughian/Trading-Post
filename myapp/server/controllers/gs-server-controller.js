@@ -25,12 +25,12 @@ exports.sendRecentPosts = function (req,res) {
        					console.log('Found:', result);
 
 
-					// Take the first six recent posts
+					// Take the first max recent posts
 					var firstSix = [];
-					var max = 6;
+					var max = 9;
 					var i;
 
-					if( result.length < 6 )
+					if( result.length < 9 )
 						max = result.length;
 
 					for( i = 0; i < max; i++ )

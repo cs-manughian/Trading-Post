@@ -1,11 +1,12 @@
 // Create a controller and add to trading-post module
-angular.module('trading-post').controller('inventoryController', function($scope, $http, $window, GsService, UserService, AllService){
+angular.module('trading-post').controller('inventoryController', function($scope, $http, $window, GsService, UserService, AllService, UploadService){
 	
 	// Vars
 	$scope.name ='inventory';
 	$scope.isInventoryFound = false;
 	$scope.inventory = {};
 	$scope.item = {};
+	$scope.sortOption = '';
 
 	// Functions
 	$scope.getUser = function() {
@@ -38,28 +39,46 @@ angular.module('trading-post').controller('inventoryController', function($scope
     	  	 });
 	};
 
-	$scope.addToInventory = function( item ) {
+	$scope.addToInventory = function( ) {
+
 		// Fill out collection name and user info
-		// to include with item details
-		var q = item;
+ 		// to include with item details
+		var q = $scope.item;
+
 		q.collName 	= "gs";
 		q.owner 	= $scope.user.username;
 		q.zipcode 	= $scope.user.zipcode;
 		q.datePosted	= new Date().toISOString().replace('T', ' ').substr(0, 19);
-		q.imgUrl	= "";
 
-		AllService.insert( q ).
-		   success(function(responseData) {
-			console.log('Successful GS insert from inventory'); 
-    		   }).
-		   error(function(responseData) {
-    	   		 console.log('Inventory POST error. Received: ', responseData);
-    	  	 });
 
-		// Force page reload after add to update inventory display
-		$window.location.reload();
+		// Upload the image
+		UploadService.uploadFile( inventoryForm ).
+			success(function(responseData) {
+				
+			    // If we got a message from server 
+			    if( responseData.message ) {
+				// Display message to client about incorrect image type
+				$window.alert("Failed to add: "+responseData.message);
+			    } else {
+
+				// Get the file name to save url in GS collection
+				q.imgUrl = './img/'+responseData.filename;
+
+				// Now insert the GS into the collection
+				AllService.insert( q ).
+		   		success(function(responseData) {
+					console.log('Successful GS insert from inventory'); 
+    		   		
+					// Force page reload after add to update inventory display
+					$window.location.reload();
+				}).
+		   		error(function(responseData) {
+    	   		 		console.log('Inventory POST error. Received: ', responseData);
+    	  	 		});
+
+			    }
+	   		});
 	};
-
 
 	$scope.removeFromInventory = function( item ) {
 
@@ -70,6 +89,7 @@ angular.module('trading-post').controller('inventoryController', function($scope
 		query.collName = "gs";
 		query._id = item._id;
 
+		// Remove the item from the user's inventory
 		AllService.remove( query ).
 		   success(function(responseData) {
 			console.log('Successful GS remove from inventory'); 
@@ -78,6 +98,9 @@ angular.module('trading-post').controller('inventoryController', function($scope
 		   error(function(responseData) {
     	   		 console.log('Inventory POST error. Received: ', responseData);
     	  	 });
+
+		// Remove the image
+		UploadService.deleteFile(item.imgUrl);
 	    }
 	};
 

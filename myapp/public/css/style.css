@@ -129,6 +129,10 @@ form {
   margin-top: 5px;
 }
 
+.inventoryInput {
+  width: 153px;
+}
+
 .trade {
   text-align: left;
   padding-left: 10px;
@@ -148,6 +152,7 @@ form {
   font-weight: bold;
   font-size: 16px;
   margin-bottom: 10px;
+  color: #337AB7;
 }
 
 footer {
@@ -155,9 +160,8 @@ footer {
   height: 175px;
   font-size: 12px;
   position: absolute;
-  top: 1500px;
-  left: 0;
   bottom: 0;
+  top: 3000px;
 }
 
 .footerSection {
@@ -177,8 +181,6 @@ footer {
 
 }
 
-
-/**Recent Post**/
 .posts {
     overflow: hidden;
     padding: 10px;
@@ -191,8 +193,6 @@ footer {
     background-color: #FFF;
 }
 
-
-/**Header**/
 .menu {
   clear: both;
   position: absolute;
@@ -284,6 +284,7 @@ h3 {
     overflow: hidden;
     width: 800px;
     margin: 0 auto;
+    position: absolute;
 }
 
 .page-column {

@@ -8,12 +8,20 @@
 	</h3>
   <br>
 
+  <b>Sort by:</b> 
+  <select ng-model="sortOption" style="width: 120px;">
+	<option value="name">Name</option>
+	<option value="type">Type</option>
+	<option value="qty">Quantity</option>
+	<option value="importance">Importance</option>
+  </select> 
+
   <div ng-show="!isWishListFound">
 	You don't have anything in your wishlist!
   </div>
 
   <ul class="posts">
-     <li class="gs" ng-repeat="item in wishList">
+     <li class="gs" ng-repeat="item in wishList | orderBy: sortOption">
   	<img ng-if="item.imgUrl" ng-src="{{item.imgUrl}}">
   	<br>
   	 <div class="post-blurb">{{item.name}} ({{item.type}})</div> 

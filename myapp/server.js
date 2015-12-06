@@ -30,8 +30,6 @@ app.use(express.urlencoded());   // to support URL-encoded bodies
 app.use( bodyParser.json() );    // to support JSON-encoded bodies
 app.use(express.json());         // to support JSON-encoded bodies
 
-
-
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());

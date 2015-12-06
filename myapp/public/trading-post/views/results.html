@@ -23,11 +23,11 @@
   		<br>
   		<br>
 		<button ng-click="toggleModal(); saveClickedGS(result);" class="btn btn-default">Request to Trade</button>
+		<button ng-click="addToWishlist(result);" class="btn btn-default">Add to Wishlist</button>
 	</li>
   </ul>
 
   <modal title="Select Good/Service to Trade:" visible="showModal">
-
     <span ng-show="isInvEmpty">
 	There's nothing in your inventory!
 	<br>

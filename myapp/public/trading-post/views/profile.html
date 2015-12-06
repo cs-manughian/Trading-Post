@@ -1,5 +1,5 @@
 <div ng-controller="profileController">
-
+  <div ng-controller="modalController">
   <br>
   <h3 class="title">Your Profile</h3>
 
@@ -14,7 +14,7 @@
      <h4>{{user.username}}</h4>
      <h5>{{user.email}}</h5>
      <h5>ZIP {{user.zipcode}}</h5>
-     <button class="btn btn-default" style="padding: 0px 5px 0px 5px">Upload photo</button>
+     <button ng-click="toggleModal();" class="btn btn-default" style="padding: 0px 5px 0px 5px">Update photo</button>
     </div>
     <div class="profile-feedback">
  	<h4>Feedback Score</h4>
@@ -56,5 +56,26 @@
 		Browsing for dogs
 	   <br>
      </div>
+  </div>
+
+  <div class="container">
+   <modal title="Update Profile Photo" visible="showModal">
+	<form class="form-horizontal" name="profileForm" role="form" enctype="multipart/form-data">
+	  <div class="form-group">
+	    <label class="col-sm-2 control-label">Image:</label>
+	    <div class="col-sm-10 inventoryForm">
+		<!-- No binding support for file upload -->
+		<input type="file" name="file" accept="image/png, image/jpeg, image/jpg" />
+	       <i>*Image file must be of type jpeg, jpg, or png</i>
+	    </div>
+	  </div> 
+	  <hr>
+	  <br>
+	  <button class="btn btn-success" type="submit" ng-click="uploadProfilePic();" data-dismiss="modal">Upload</button>
+	</form>
+	<br>
+   </modal>  
+  </div>
+
   </div>
 </div>

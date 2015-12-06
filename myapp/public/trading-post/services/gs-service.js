@@ -42,11 +42,8 @@ angular.module('trading-post').factory('GsService',function($http, $location) {
 
 		// Get query from URL
 		var myQuery = {};
-		myQuery.category = getUrlVariable('category','?');
-		myQuery.gsName = getUrlVariable('gsName','&');
-		myQuery.zipcode = getUrlVariable('zipcode','&');
-
-
+		myQuery = queryStringToJSON();
+		
 		// Use post for secure queries
 		// Need search results for display
 		return $http.post('/results', myQuery);
@@ -55,26 +52,20 @@ angular.module('trading-post').factory('GsService',function($http, $location) {
 
 	// Helper function:
 	// Gets a query variable's value from url 
-	// so we don't have to use HTML 5 mode
-	getUrlVariable = function(variable, prefix)
-	{
-       		var query = window.location.search.substring(1);
-       		var vars = query.split(prefix);
-       		for (var i=0;i<vars.length;i++) {
-              	 	var pair = vars[i].split("=");
-               		if(pair[0] == variable && prefix == "&")
-               		{
-      	         	  return pair[1].split("+").join(" ");
-               	  
-        	       	}
-               		else if(pair[0] == variable && prefix == "?"){ 
-        	       	  return pair[1].split("&", 1)[0];
-               		}
-       		}
-       		return(false);
+	// so we don't have to use HTML 5 mode.
+	// Return as JSON.
+
+	queryStringToJSON = function() {            
+    		var pairs = window.location.search.slice(1).split('&');
+    
+    		var result = {};
+    		pairs.forEach(function(pair) {
+        		pair = pair.split('=');
+        		result[pair[0]] = decodeURIComponent(pair[1] || '');
+    		});
+
+    		return JSON.parse(JSON.stringify(result));
 	}
-
-
 
 	return GoodsServicesOp;
 	       

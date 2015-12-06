@@ -6,9 +6,9 @@
 
 
 var MongoClient = require("mongodb").MongoClient;
+var multer  = require('multer');
 
 module.exports = function (app) {
-
 
 	//============Require functions to handle HTTP requests===========//
 
@@ -27,6 +27,13 @@ module.exports = function (app) {
 
 	// For logging out the user
 	app.get('/logout', login.logOut);
+
+	// For handling file uploads
+	var upload = multer({ dest: '/home/ubuntu/myapp/public/img/' });
+	app.post('/upload', upload.single('file'), anyPage.upload);
+
+	// For file removal
+	app.post('/rfile', anyPage.delete);
 
 	//Handle data (model) requests
 	MongoClient.connect("mongodb://localhost:27017/tradingpost", function(err, db) {
@@ -85,6 +92,9 @@ module.exports = function (app) {
 				// For updating wishlist
 				app.post('/updateWishList', attachDB, user.updateWishList);
 
+				// For inserting in wishlist
+				app.post('/insertWishList', attachDB, user.insertWishList);
+
 				// For any page 
 				app.post('/update', attachDB, anyPage.updateDocument);
 				app.post('/insert', attachDB, anyPage.insertDocument);
@@ -93,9 +103,11 @@ module.exports = function (app) {
 			}
    	});
 
+
 	// Handle 404
 	app.use(function(req, res, next){
   		res.status(404).render('404', { url: req.url });
+
 	});
 
   	// Handle 500

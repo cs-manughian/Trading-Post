@@ -1,7 +1,7 @@
 /*
 *  Controller for the model:
 *  to fullfil HTTP requests from client
-*  for model data
+*  for model data or file upload
 *
 *  CRUD operations for querying model:
 *    insertDocument
@@ -10,12 +10,16 @@
 *    removeDocument
 *  which can be used for any collection ("all")
 *
+*  File upload operations:
+*    upload
+*
 */
 
 // Collections:
 // gs, messages, trades, users
 
 var ObjectID = require('mongodb').ObjectID;
+var fs = require('fs');
 
 // Update a document's value field
 exports.updateDocument = function (req,res) {
@@ -172,3 +176,47 @@ exports.searchDocuments = function (req,res) {
 
 }
 
+exports.upload = function(req, res){
+
+  console.log("REQ.FILE: ", req.file);
+
+  // Check file extension to make sure it's an image
+  if(  !req.file || 
+      (req.file.mimetype != 'image/jpeg'&& 
+       req.file.mimetype != 'image/jpg' && 
+       req.file.mimetype != 'image/png')) {
+
+     	res.send({message: "Image file must be of type jpeg, jpg, or png."});
+
+  } else { 
+
+  	// Upload the image (write the file to the public img folder)
+
+  	fs.readFile(req.file.path, function (err, file) {
+    	  fs.writeFile(req.file.path, file, function (err) {
+    		if(err) {
+	   		console.log("Upload error: ", err);
+		} else {
+	   		console.log("Sucessful image upload!");
+	   		res.json({filename: req.file.filename});
+		}
+    	  });
+  	});
+  }
+}
+
+exports.delete = function(req, res) {
+  
+   var filePath = "/home/ubuntu/myapp/public/img/" + req.body.filename;
+
+   // Remove the file specified in the file url
+   fs.unlink( filePath,  function (err, result) {
+    	if(err) {
+	   	console.log("File removal error: ", err);
+	} else {
+	   	console.log("Sucessful file removal!");
+	   	res.end();
+	}
+   });
+
+}

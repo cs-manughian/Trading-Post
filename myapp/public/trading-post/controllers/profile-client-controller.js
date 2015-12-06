@@ -31,6 +31,9 @@ angular.module('trading-post').controller('profileController', function($scope, 
     	  	 });
 	};
 	
+	$scope.uploadProfilePic = function() {
+		$window.alert("NOT YET FUNCTIONAL");
+	};
 	
 	// Calculate the weighted average for feedback score
 	$scope.calcFeedback = function() {

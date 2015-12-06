@@ -5,6 +5,7 @@ angular.module('trading-post').controller('wishlistController', function($scope,
 	$scope.name ='wishlist';
 	$scope.isWishListFound = false;
 	$scope.wishList = {};
+	$scope.sortOption = '';
 
 	// Functions
 	$scope.getUser = function() {

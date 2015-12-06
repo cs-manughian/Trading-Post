@@ -16,6 +16,14 @@ angular.module('trading-post').factory('UserService',function($http) {
 
 	};
 
+	UserOp.addToWishlist = function( item ) {
+		var query = {};
+		query.item = item;
+
+		// Add the item to the current user's wishlist
+		return $http.post('/insertWishList', query);
+	};
+
 	return UserOp;
 	       
 });

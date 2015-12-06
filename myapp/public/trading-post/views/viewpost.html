@@ -12,8 +12,8 @@
     <li><h3><b>{{currPost.name}}</b></h3><li>
     <li><h4 class="post-owner"><a href="#/profile">{{currPost.owner}} (Feedback)</a></h4></li>
     <li><h5 class="post-location">{{currPost.zipcode}}</h5></li>
-    <li><a href="#">Request a trade</a></li>
-    <li><a href="#">Add to wishlist</a></li>
+    <li><a href="#/profile/trades">Request a trade</a></li>
+    <li><a ng-click="addToWishlist(currPost);">Add to wishlist</a></li>
   </ul>
 
 

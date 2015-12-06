@@ -5,13 +5,13 @@
 
 // configure our routes
 angular.module('trading-post').config(['$routeProvider', '$locationProvider', 
-    function($routeProvider, $locationProvider) {
+	function($routeProvider, $locationProvider) {
 
-            $routeProvider
+    	    $routeProvider
 
             // route for the home page
             .when('/', {
-          //Show recent posts as the home page
+		  //Show recent posts as the home page
                 templateUrl : 'trading-post/views/recentposts.html' 
             })
 
@@ -40,12 +40,12 @@ angular.module('trading-post').config(['$routeProvider', '$locationProvider',
        
             })
 
-            //route for single item page
+            // route for single item page
             .when('/viewpost', {
                 templateUrl : 'trading-post/views/viewpost.html'
             })
 
-            .otherwise({
-            redirectTo: '/'
-            });
+      	    .otherwise({
+        	redirectTo: '/'
+      	    });
         }]);
